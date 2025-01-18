@@ -1,32 +1,26 @@
-'use client';
+'use client'
+import classes from "./Registration.module.scss"
+import { useState } from 'react';
+import axios from 'axios';
 
-import { useState } from "react";
-import axios from "axios";
-import classes from "./RegisterModalClass.module.scss";
-import { $url } from "@/api/api";
-
-type RegisterModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-
-export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
-  const [activeTab, setActiveTab] = useState<"register" | "login">("register");
+export default function Registration() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    roles: "PARENT",
-    name: "",
-    surname: "",
-    age: "",
-    resume: "",
+    email: '',
+    password: '',
+    roles: 'PARENT',
+    name: '',
+    surname: '',
+    age: '',
+    resume: '',
     inn: null as File | null,
     passport: null as File | null,
   });
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -40,13 +34,10 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
 
   const handleSubmit = async () => {
     setLoading(true);
-    setMessage("");
+    setMessage('');
 
     try {
-      const endpoint =
-        activeTab === "register"
-          ? `${$url}/api/v1/user/register`
-          : `${$url}/api/v1/user/login`;
+      const endpoint = '/api/v1/user/register';
 
       const formDataToSend = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
@@ -56,45 +47,32 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
       });
 
       const res = await axios.post(endpoint, formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
 
       const data = res.data;
-      setMessage(`Success: ${data.message || "Operation completed"}`);
+      setMessage(`Success: ${data.message || 'Operation completed'}`);
       console.log(data);
     } catch (error: any) {
-      setMessage(`Error: ${error.response?.data?.message || "An error occurred"}`);
+      setMessage(`Error: ${error.response?.data?.message || 'An error occurred'}`);
     } finally {
       setLoading(false);
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className={classes.overlay} onClick={onClose}>
-      <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
-        <div className={classes.header}>
-          <button
-            className={activeTab === "register" ? classes.active : ""}
-            onClick={() => setActiveTab("register")}
-          >
-            Register
-          </button>
-          <button
-            className={activeTab === "login" ? classes.active : ""}
-            onClick={() => setActiveTab("login")}
-          >
-            Login
-          </button>
-        </div>
-        <div className={classes.body}>
+    <div className={classes.wrapper}>
+      <div className={classes.left}></div>
+      <div className={classes.right}>
+        <h1 className={classes.Name}>Register</h1>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <input
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
+            required
           />
           <input
             type="password"
@@ -102,20 +80,19 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
             placeholder="Password"
             value={formData.password}
             onChange={handleInputChange}
+            required
           />
-          {activeTab === "register" && (
-            <select
-              name="roles"
-              value={formData.roles}
-              onChange={handleInputChange}
-              className={classes.roleSelect}
-            >
-              <option value="PARENT">PARENT</option>
-              <option value="EMPLOYER">EMPLOYER</option>
-            </select>
-          )}
+          <select
+            name="roles"
+            value={formData.roles}
+            onChange={handleInputChange}
+            className={classes.roleSelect}
+          >
+            <option value="PARENT">PARENT</option>
+            <option value="EMPLOYER">EMPLOYER</option>
+          </select>
 
-          {formData.roles === "EMPLOYER" && (
+          {formData.roles === 'EMPLOYER' && (
             <>
               <input
                 type="text"
@@ -123,6 +100,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleInputChange}
+                required
               />
               <input
                 type="text"
@@ -130,6 +108,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                 placeholder="Surname"
                 value={formData.surname}
                 onChange={handleInputChange}
+                required
               />
               <input
                 type="number"
@@ -139,24 +118,26 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                 onChange={handleInputChange}
                 min={15}
                 max={125}
+                required
               />
-              <label className={classes.h7}>
+              <label className={classes.fileLabel}>
                 Attach INN Image:
                 <input
                   type="file"
                   name="inn"
                   onChange={handleFileChange}
                   accept="image/*"
+                  required
                 />
               </label>
-              <label className={classes.h7}>
+              <label className={classes.fileLabel}>
                 Attach Passport Image:
                 <input
                   type="file"
-                  
                   name="passport"
                   onChange={handleFileChange}
                   accept="image/*"
+                  required
                 />
               </label>
               <textarea
@@ -165,24 +146,20 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                 value={formData.resume}
                 onChange={handleInputChange}
                 className={classes.textArea}
+                required
               />
-
             </>
           )}
 
           <button
+            type="submit"
             className={classes.submit}
-            onClick={handleSubmit}
             disabled={loading}
           >
-            {loading
-              ? "Processing..."
-              : activeTab === "register"
-              ? "Register"
-              : "Login"}
+            {loading ? 'Processing...' : 'Register'}
           </button>
           {message && <p className={classes.message}>{message}</p>}
-        </div>
+        </form>
       </div>
     </div>
   );
