@@ -1,0 +1,47 @@
+.hero{
+    width: 1600px;
+    height: 100vh;
+}
+
+.box_1{
+    display: flex;
+    padding-left:260px;
+    padding-top: 80px;
+    gap: 150px;
+}
+
+.box_1 img {
+    border-radius: 15px;
+}
+
+.box_1_text_1 {
+    display: flex;
+    padding-top: 30px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+
+
+
+.box_2{
+    display: flex;
+    padding-right: 260px;
+    padding-top: 80px;
+    flex-direction: row-reverse;
+    gap: 150px;
+}
+
+.box_2 img {
+    border-radius: 15px;
+}
+
+.box_2_text_2 {
+    display: flex;
+    padding-top: 30px;
+    flex-direction: column;
+    gap: 10px;
+}
