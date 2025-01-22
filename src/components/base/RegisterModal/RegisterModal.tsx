@@ -12,13 +12,24 @@ type RegisterModalProps = {
 
 export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
-  const [formData, setFormData] = useState({ email: "", password: "", roles: "PARENT" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    roles: "PARENT",
+  });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    if (files && files.length > 0) {
+      setFormData((prev) => ({ ...prev, [name]: files[0] }));
+    }
   };
 
   const handleSubmit = async () => {
@@ -31,10 +42,20 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
           ? `${$url}/api/v1/user/register`
           : `${$url}/api/v1/user/login`;
 
-      const res = await axios.post(endpoint, formData);
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value) {
+          formDataToSend.append(key, value);
+        }
+      });
+
+      const res = await axios.post(endpoint, formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       const data = res.data;
       setMessage(`Success: ${data.message || "Operation completed"}`);
-      console.log(data)
+      console.log(data);
     } catch (error: any) {
       setMessage(`Error: ${error.response?.data?.message || "An error occurred"}`);
     } finally {
@@ -84,9 +105,10 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
               className={classes.roleSelect}
             >
               <option value="PARENT">PARENT</option>
-              <option value="GUEST">GUEST</option>
+              <option value="EMPLOYER">EMPLOYER</option>
             </select>
           )}
+
           <button
             className={classes.submit}
             onClick={handleSubmit}

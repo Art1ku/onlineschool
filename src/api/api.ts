@@ -1,1 +1,1 @@
-export const $url = "http://192.168.68.229:9090"
+export const $url = "http://192.168.68.213:8080"
