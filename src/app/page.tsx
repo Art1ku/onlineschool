@@ -7,6 +7,7 @@ import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
 import "./page.module.css"
+import Application from "@/app/Pages/Application/page";
 
 export default function Home() {
   
@@ -31,12 +32,12 @@ export default function Home() {
 
   return (
     <>
-      <Header/>
-      <button onClick={sendPost}>Send Post</button>
+      <Application></Application>
+      {/*<button onClick={sendPost}>Send Post</button>*/}
 
-      <button onClick={() => setModalOpen(true)}>Open Modal</button>
-      <RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-      <Footer/>
+      {/*<button onClick={() => setModalOpen(true)}>Open Modal</button>*/}
+      {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />*/}
+      {/*<Footer/>*/}
     </>
   );
 }
