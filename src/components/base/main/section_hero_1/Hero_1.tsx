@@ -1,9 +1,9 @@
-import images from "../photo/book-2562345-copy-1536x1024-1 1 (1).png";
+import images from "../../photo/book-2562345-copy-1536x1024-1 1 (1).png";
 import React from 'react';
-import classes from '../main/Hero_Style.module.css'
+import classes from './section_hero_1_style_1/Hero_Style.module.scss'
 
 
-const Hero = () => {
+const Hero_1 = () => {
     return (
         <div className={classes.hero}>
             <div className={classes.hero_container}>
@@ -30,4 +30,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Hero_1;

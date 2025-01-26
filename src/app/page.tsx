@@ -7,7 +7,8 @@ import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
 import cl  from  "./page.module.css"
-import Hero from "@/components/base/main/Hero";
+import Hero_1 from "@/components/base/main/section_hero_1/Hero_1";
+import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
 
 export default function Home() {
 
@@ -35,7 +36,8 @@ export default function Home() {
             <div className={cl.body}>
                 <Header/>
                 {/*<button onClick={sendPost}>Send Post</button>*/}
-                <Hero/>
+                <Hero_1/>
+                <Hero_2/>
 
                 {/*<button onClick={() => setModalOpen(true)}>Open Modal</button>*/}
                 {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>*/}
