@@ -1,10 +1,39 @@
-.hero_2 {
+.container {
 
-  background-image: url('/src/components/base/photo/20240509-hbs-baker-library-0800 1.jpg');
-  min-height: 100vh;
+  background-image: url('/images/students.svg');
+  height: 100vh;
+  margin-top: 100px;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
 
+}
+
+.title_1{
+  font-size: 50px;
+  color: #ffffff;
+  padding-top: 100px;
+  padding-left: 150px;
+}
+.line{
+  margin-left: 150px;
+  width: 900px;
+  background-color: #ffffff;
+  height: 3px;
+}
+
+.title_2{
+  font-size: 30px;
+  color: #ffffff;
+  padding-left: 150px;
+  max-width: 550px;
+}
+
+.button_login{
+  border: none;
+  background: #00C3FF;
+  font-size: 24px;
+  padding: 15px 70px 15px 70px;
+  margin-left: 1200px;
+  margin-top: 230px;
 }

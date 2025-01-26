@@ -1,6 +1,6 @@
 import cl from "./Header.module.scss"
-import school from "../photo/Group 15.png"
-import menu from "../photo/Group 1.png"
+import school from "../../../../public/images/Group 15.png"
+import menu from "../../../../public/images/Group 1.png"
 
 export default function Header() {
 
