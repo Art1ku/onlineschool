@@ -12,6 +12,26 @@
     margin: 68px 0 47px 0;
   }
 
+  .selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: 'Jua', sans-serif;
+
+    label {
+      color: #444;
+    }
+
+    select {
+      padding: 15px 20px;
+      font-family: 'Jua', sans-serif;
+      font-size: 15px;
+
+    }
+  }
+
   form {
     display: flex;
     justify-content: center;
@@ -83,6 +103,8 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  position: relative;
+  margin-bottom: 20px;
 
   .fileLabel {
     display: flex;
@@ -104,14 +126,8 @@
   }
 
   .fileInput {
-    display: none; // Скрываем стандартный input
+    display: none;
   }
-}
-
-
-.fileInputWrapper {
-  position: relative;
-  margin-bottom: 20px;
 }
 
 .fileLabel {
@@ -140,4 +156,23 @@
 .fileCount > span {
   color: #007bff; /* Выделение синей окраской */
   font-weight: bold;
+}
+
+.employeeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .employeeInput {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .files {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+  }
 }
