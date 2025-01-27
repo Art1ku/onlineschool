@@ -1,23 +1,27 @@
 import React from 'react';
-import classes from './Input.module.scss';
+import classes from './Input.module.scss'
 
-interface InputProps {
-    type?: string; // Опциональный тип
-    value: string; // Обязательное значение для поля
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Обработчик изменения
-    placeholder: string; // Плейсхолдер
+
+interface RegisterInputProps {
+    type: string;
+    name: string;
+    placeholder: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const RegisterInput: React.FC<InputProps> = ({ value, onChange, type = 'text', placeholder }) => {
+const RegisterInput: React.FC<RegisterInputProps> = ({ type, name, placeholder, value, onChange }) => {
     return (
-        <input
-            className={classes.input}
-            type={type} // Используется тип, если он передан
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            required
-        />
+        <div>
+            <input
+                className={classes.input}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+            />
+        </div>
     );
 };
 

@@ -7,10 +7,11 @@ import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
 import "./page.module.css"
-import Application from "@/app/Pages/Application/page";
+import Application from "@/app/application/page";
+import Link from "next/link";
 
 export default function Home() {
-  
+
   const user =  {
     "email": "ldhxhfdsfdsgfddgbk",
     "password": "3pogj3p4g2",
@@ -32,12 +33,8 @@ export default function Home() {
 
   return (
     <>
-      <Application></Application>
-      {/*<button onClick={sendPost}>Send Post</button>*/}
-
-      {/*<button onClick={() => setModalOpen(true)}>Open Modal</button>*/}
-      {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />*/}
-      {/*<Footer/>*/}
+      <Header></Header>
+      <Link href="/application">Go to Application</Link>
     </>
   );
 }
