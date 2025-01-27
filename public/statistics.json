@@ -1,0 +1,12 @@
+[
+  { "description": "Number of Teachers", "value": 25, "icon": "teacher" },
+  { "description": "Students Enrolled", "value": 1200, "icon": "student" },
+  { "description": "Students Abroad", "value": 150, "icon": "globe" },
+  { "description": "Graduates This Year", "value": 300, "icon": "graduate" },
+  { "description": "New Admissions", "value": 450, "icon": "admission" },
+  { "description": "Departments", "value": 8, "icon": "department" },
+  { "description": "Courses Offered", "value": 50, "icon": "courses" },
+  { "description": "Research Projects", "value": 12, "icon": "research" },
+  { "description": "IT Projects", "value": 17, "icon": "it-projects" },
+  { "description": "Rate in World University", "value": 10, "icon": "rate" }
+]

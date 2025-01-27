@@ -6,7 +6,9 @@ import { useState } from "react";
 import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
+import Slider from "@/components/base/Slider/Slider";
 import "./page.module.css"
+import Statistic from "@/components/base/Statistic/Statistic";
 
 export default function Home() {
   
@@ -36,6 +38,8 @@ export default function Home() {
 
       <button onClick={() => setModalOpen(true)}>Open Modal</button>
       <RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+      <Slider></Slider>
+      <Statistic></Statistic>
       <Footer/>
     </>
   );
