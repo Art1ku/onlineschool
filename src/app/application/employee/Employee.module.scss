@@ -1,6 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+.employeeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 
-.application {
+  .employeeInput {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .files {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+}
+
+.employee {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -10,13 +27,6 @@
   h2 {
     font-size: 36px;
     margin: 68px 0 47px 0;
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
   }
 
   button {
@@ -29,5 +39,4 @@
     font-family: "Jua";
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
-
 }

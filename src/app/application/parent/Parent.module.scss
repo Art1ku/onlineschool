@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
-.application {
+.parent {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -10,13 +8,6 @@
   h2 {
     font-size: 36px;
     margin: 68px 0 47px 0;
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
   }
 
   button {
@@ -29,5 +20,29 @@
     font-family: "Jua";
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
+}
 
+.forms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
+  margin-bottom: 30px;
+
+  .parentInput {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .childInput {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    .files {
+      display: flex;
+      gap: 13px;
+    }
+  }
 }

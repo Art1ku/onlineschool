@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "@/app/application/Application.module.scss";
+import classes from "@/app/application/parent/Parent.module.scss";
 import RegisterInput from "@/components/base/Input/InputsRegister";
 import FileInput from "@/components/base/FileInput/FileInput";
 
@@ -33,7 +33,7 @@ const ParentForm: React.FC<ParentFormProps> = ({
             <form onSubmit={handleSubmit}>
                 <div className={classes.forms}>
                     {/* Родители */}
-                    <div className={classes.parent}>
+                    <div className={classes.parentInput}>
                         <h3>Parent Information</h3>
                         <div className={classes.parentInput}>
                             {parentFields.map((field) => (
@@ -54,7 +54,7 @@ const ParentForm: React.FC<ParentFormProps> = ({
                     </div>
 
                     {/* Ребенок */}
-                    <div className={classes.child}>
+                    <div className={classes.childInput}>
                         <h3>Child Information</h3>
                         <div className={classes.childInput}>
                             {childFields.map((field) => (
@@ -68,14 +68,16 @@ const ParentForm: React.FC<ParentFormProps> = ({
                                 />
                             ))}
                         </div>
-                        <FileInput
-                            label="Child Birth Certificate"
-                            onChange={(e) => handleFileChange(e, 'childBirthCertificate')}
-                        />
-                        <FileInput
-                            label="Child Registration Book"
-                            onChange={(e) => handleFileChange(e, 'childRegistrationBook')}
-                        />
+                        <div className={classes.files}>
+                            <FileInput
+                                label="Child Birth Certificate"
+                                onChange={(e) => handleFileChange(e, 'childBirthCertificate')}
+                            />
+                            <FileInput
+                                label="Child Registration Book"
+                                onChange={(e) => handleFileChange(e, 'childRegistrationBook')}
+                            />
+                        </div>
                     </div>
                 </div>
 

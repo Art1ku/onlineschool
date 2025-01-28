@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classes from '../../../app/application/Application.module.scss';
+import classes from './File.module.scss';
 
 interface FileInputProps {
     label: string;

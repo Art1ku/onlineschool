@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../../app/application/Application.module.scss';
+import classes from '@/app/application/employee/Employee.module.scss';
 import RegisterInput from "@/components/base/Input/InputsRegister";
 import FileInput from "@/components/base/FileInput/FileInput";
 
@@ -44,7 +44,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                     />
                 </div>
             </div>
-            <button type="submit">Submit Employee Application</button>
+            <button type="submit">Submit Application</button>
         </form>
     );
 };

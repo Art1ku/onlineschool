@@ -7,7 +7,7 @@ import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
 import "./page.module.css"
-import Application from "@/app/application/page";
+import Application from "@/app/pages/application/page";
 import Link from "next/link";
 
 export default function Home() {
