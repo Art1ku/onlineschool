@@ -1,6 +1,8 @@
 .section_name{
   color: #ffffff;
   padding-top: 30px;
+  margin-bottom: 30px;
+
   display: flex;
   justify-content: center;
 }
@@ -14,7 +16,7 @@
 .cart_container{
   margin-left: 65px;
   width: 350px;
-  height:470px;
+  height:auto;
   border-radius: 10px;
   background: #00BFFF;
 }
@@ -22,14 +24,17 @@
 .cart_img{
   display: flex;
   align-items: center;
-  width: 270px;
-  padding: 40px;
+  width: 300px;
+  padding-left: 45px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
 }
 
 .cart_container h2 {
   color: #ffffff;
-  padding-left: 40px;
-  max-width: 250px;
+  padding-left: 60px;
+  max-width: 300px;
 
 }
 
@@ -38,5 +43,7 @@
   margin-left: 80px ;
   border: none;
   padding: 10px 30px 10px 30px;
+  margin-top: 35px;
+  margin-bottom: 35px;
 
 }

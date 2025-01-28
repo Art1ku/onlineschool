@@ -25,28 +25,52 @@ const Hero3 = () => {
                             <div className={cl.cart_container}>
                                 <img className={cl.cart_img} src={Brain.src}/>
                                 <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
-                                <button>read more ></button>
+                                <button>read more {'>'}</button>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className={cl.cart_container}>
                                 <img className={cl.cart_img} src={Brain.src}/>
                                 <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
-                                <button>read more ></button>
+                                <button>read more {'>'}</button>
                             </div>
-                        </SwiperSlide>                        <SwiperSlide>
-                        <div className={cl.cart_container}>
-                            <img className={cl.cart_img} src={Brain.src}/>
-                            <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
-                            <button>read more ></button>
-                        </div>
-                    </SwiperSlide>                        <SwiperSlide>
-                        <div className={cl.cart_container}>
-                            <img className={cl.cart_img} src={Brain.src}/>
-                            <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
-                            <button>read more ></button>
-                        </div>
-                    </SwiperSlide>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cl.cart_container}>
+                                <img className={cl.cart_img} src={Brain.src}/>
+                                <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
+                                <button>read more {'>'}</button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cl.cart_container}>
+                                <img className={cl.cart_img} src={Brain.src}/>
+                                <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
+                                <button>read more {'>'}</button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cl.cart_container}>
+                                <img className={cl.cart_img} src={Brain.src}/>
+                                <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
+                                <button>read more {'>'}</button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cl.cart_container}>
+                                <img className={cl.cart_img} src={Brain.src}/>
+                                <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
+                                <button>read more {'>'}</button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className={cl.cart_container}>
+                                <img className={cl.cart_img} src={Brain.src}/>
+                                <h2> Neural Networks Do Not Work Like Human Brains – Let’s Debunk The Myth</h2>
+                                <button>read more {'>'}</button>
+                            </div>
+                        </SwiperSlide>
+                        
 
 
 
