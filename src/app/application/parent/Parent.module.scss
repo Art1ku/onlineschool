@@ -1,0 +1,48 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Jua";
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 36px;
+    margin: 68px 0 47px 0;
+  }
+
+  button {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 22px;
+    border-radius: 8px;
+    border: none;
+    font-family: "Jua";
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+
+.forms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
+  margin-bottom: 30px;
+
+  .parentInput {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .childInput {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    .files {
+      display: flex;
+      gap: 13px;
+    }
+  }
+}
