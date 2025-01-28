@@ -9,6 +9,7 @@ import Footer from "@/components/base/Footer/Footer";
 import cl  from  "./page.module.css"
 import Hero_1 from "@/components/base/main/section_hero_1/Hero_1";
 import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
+import Hero_3 from "@/components/base/main/section_hero_3/Hero_3";
 
 export default function Home() {
 
@@ -37,7 +38,9 @@ export default function Home() {
                 <Header/>
                 {/*<button onClick={sendPost}>Send Post</button>*/}
                 <Hero_1/>
+
                 <Hero_2/>
+                <Hero_3/>
 
                 {/*<button onClick={() => setModalOpen(true)}>Open Modal</button>*/}
                 {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>*/}
