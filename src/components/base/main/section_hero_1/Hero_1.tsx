@@ -9,19 +9,19 @@ const Hero_1 = () => {
             <div className={classes.hero_container}>
                 <div className={classes.container}>
                     <div className={classes.box_1}>
-                        <img src={images.src}/>
+                        <img src={images.src} />
                         <div className={classes.box_1_text_1}>
-                            <h3>Before you make a choice</h3>
-                            <h2>A Guide to Maintaining Your Determination</h2>
-                            <h3>Moving forward, even slowly, makes your goals achievable.</h3>
+                            <h2>Before you make a choice</h2>
+                            <h1>A Guide to Maintaining Your Determination</h1>
+                            <h2>Moving forward, even slowly, makes your goals achievable.</h2>
                         </div>
                     </div>
                     <div className={classes.box_2}>
-                        <img src={images.src}/>
+                        <img src={images.src} />
                         <div className={classes.box_2_text_2}>
-                            <h3>Before you make a choice</h3>
-                            <h2>A Guide to Maintaining Your Determination</h2>
-                            <h3>Moving forward, even slowly, makes your goals achievable.</h3>
+                            <h2>Before you make a choice</h2>
+                            <h1>A Guide to Maintaining Your Determination</h1>
+                            <h2>Moving forward, even slowly, makes your goals achievable.</h2>
                         </div>
                     </div>
                 </div>
