@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import cl from "./Header.module.scss"
 import school from "../../../../public/images/Group 15.png"
 import menu from "../../../../public/images/Group 1.png"
@@ -20,5 +21,20 @@ export default function Header() {
                 </div>
             </div>
         </>
+=======
+'use client'
+
+import classes from "./Header.module.scss"
+import BurgerMenu from "@/components/base/BurgerMenu/BurgerMenu";
+import Link from "next/link";
+export default function Header(){
+
+
+    return(
+     <header className={classes.header}>
+         <Link href='/'><img src="/header_logo.svg" alt=""/></Link>
+         <BurgerMenu></BurgerMenu>
+     </header>
+>>>>>>> 4db280174c84bf95c098e5b51ac643b68710a9a8
     )
 }
