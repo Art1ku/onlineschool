@@ -1,173 +1,103 @@
-'use client'
-import classes from "./Registration.module.scss"
+'use client';
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import classes from './Registration.module.scss';
+import { $url } from "@/api/api";
 
 export default function Registration() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
     password: '',
-    roles: 'PARENT',
-    name: '',
-    surname: '',
-    age: '',
-    resume: '',
-    inn: null as File | null,
-    passport: null as File | null,
+    roles: [{ title: '' }], 
+    userStatus: 'ACTIVE', 
   });
-  const [loading, setLoading] = useState(false);
+
   const [message, setMessage] = useState('');
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files && files.length > 0) {
-      setFormData((prev) => ({ ...prev, [name]: files[0] }));
+    if (name === 'role') {
+      setFormData({
+        ...formData,
+        roles: [{ title: value }],
+      });
+    } else {
+      setFormData({ ...formData, [name]: value });
     }
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    setMessage('');
-
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      const endpoint = '/api/v1/user/register';
-
-      const formDataToSend = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (value) {
-          formDataToSend.append(key, value);
+      const response = await axios.post(`${$url}/api/v1/user/register`, formData);
+      if (response.status === 200) {
+        const role = formData.roles[0].title;
+        setMessage('Registration successful! Redirecting...');
+        
+        // Перенаправление в зависимости от роли
+        if (role === 'PARENT') {
+          router.push('/application/parent');
+        } else if (role === 'EMPLOYEE') {
+          router.push('/application/employee');
+        } else if (role === 'DIRECTOR') {
+          router.push('/application/director');
         }
-      });
-
-      const res = await axios.post(endpoint, formDataToSend, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      const data = res.data;
-      setMessage(`Success: ${data.message || 'Operation completed'}`);
-      console.log(data);
+      }
     } catch (error: any) {
-      setMessage(`Error: ${error.response?.data?.message || 'An error occurred'}`);
-    } finally {
-      setLoading(false);
+      setMessage(error.response?.data?.message || 'Registration failed!');
     }
   };
 
   return (
-    <>
     <div className={classes.wrapper}>
-      <div className={classes.left}></div>
-      <div className={classes.right}>
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <p className={classes.Name}>Registration</p>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-            className={classes.inputt}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className={classes.inputt}
-            required
-          />
-          <select
-            name="roles"
-            value={formData.roles}
-            onChange={handleInputChange}
-            className={classes.roleSelect}
-          >
-            <option value="PARENT">PARENT</option>
-            <option value="EMPLOYER">EMPLOYER</option>
-          </select>
-
-          {formData.roles === 'EMPLOYER' && (
-            <>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className={classes.inputt}
-                required
-              />
-              <input
-                type="text"
-                name="surname"
-                placeholder="Surname"
-                value={formData.surname}
-                onChange={handleInputChange}
-                className={classes.inputt}
-                required
-              />
-              <input
-                type="number"
-                name="age"
-                placeholder="Age"
-                value={formData.age}
-                onChange={handleInputChange}
-                className={classes.inputt}
-                min={15}
-                max={125}
-                required
-              />
-              <label className={classes.fileLabel}>
-                Attach INN Image:
-                <input
-                  type="file"
-                  name="inn"
-                  onChange={handleFileChange}
-                  accept="image/*"
-                  required
-                />
-              </label>
-              <label className={classes.fileLabel}>
-                Attach Passport Image:
-                <input
-                  type="file"
-                  name="passport"
-                  onChange={handleFileChange}
-                  accept="image/*"
-                  required
-                />
-              </label>
-              <textarea
-                name="resume"
-                placeholder="Resume"
-                value={formData.resume}
-                onChange={handleInputChange}
-                className={classes.textArea}
-                required
-              />
-            </>
-          )}
-
-          <button
-            type="submit"
-            className={classes.submit}
-            disabled={loading}
-          >
-            {loading ? 'Processing...' : 'Register'}
-          </button>
-          {message && <p className={classes.message}>{message}</p>}
-        </form>
-      </div>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <h1>Registration</h1>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <select
+          name="role"
+          value={formData.roles[0]?.title}
+          onChange={handleChange}
+          required
+        >
+          <option value="" disabled>
+            Select Role
+          </option>
+          <option value="PARENT">Parent</option>
+          <option value="EMPLOYEE">Employee</option>
+          <option value="DIRECTOR">Director</option>
+        </select>
+        <button type="submit">Register</button>
+        {message && <p className={classes.message}>{message}</p>}
+      </form>
     </div>
-    </>
   );
 }

@@ -1,47 +1,54 @@
 'use client'
-import { $url } from "@/api/api";
+import {$url} from "@/api/api";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
+import {useState} from "react";
 import Header from "@/components/base/Header/Header";
 import Footer from "@/components/base/Footer/Footer";
 import Slider from "@/components/base/Slider/Slider";
 import "./page.module.css"
 import Statistic from "@/components/base/Statistic/Statistic";
+import cl  from  "./page.module.css"
+import Hero_1 from "@/components/base/main/section_hero_1/Hero_1";
+import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
+import Hero_3 from "@/components/base/main/section_hero_3/Hero_3";
+import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
 
 export default function Home() {
-  
-  const user =  {
-    "email": "ldhxhfdsfdsgfddgbk",
-    "password": "3pogj3p4g2",
-    "roles": "PARENT"
-  };
 
-  const sendPost = async () => {
-    try {
-      const res = await axios.get(`${$url}/api/v1/user/get-all-users`);
-      const data = res.data;
-      console.log("Response:", data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+    const user = {
+        "email": "ldhxhfdsfdsgfddgbk",
+        "password": "3pogj3p4g2",
+        "roles": "PARENT"
+    };
+
+    const sendPost = async () => {
+        try {
+            const res = await axios.get(`${$url}/api/v1/user/get-all-users`);
+            const data = res.data;
+            console.log("Response:", data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
 
 
-  const [isModalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
 
-  return (
-    <>
-      <Header/>
-      <button onClick={sendPost}>Send Post</button>
-
-      <button onClick={() => setModalOpen(true)}>Open Modal</button>
-      <RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-      <Slider></Slider>
-      <Statistic></Statistic>
-      <Footer/>
-    </>
-  );
+    return (
+        <>
+            <div className={cl.body}>
+                <Header/>
+                <Slider></Slider>
+                <Hero_1/>
+                <RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+                <Statistic></Statistic>
+                <Hero_2/>
+                <Hero_3/>
+                <Footer/>
+            </div>
+        </>
+    );
 }
 
+{/* <button onClick={sendPost}>Send Post</button>
+                <button onClick={() => setModalOpen(true)}>Open Modal</button> */}

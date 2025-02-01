@@ -16,6 +16,12 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
     email: "",
     password: "",
     roles: "PARENT",
+    name: "",
+    surname: "",
+    age: "",
+    resume: "",
+    inn: null as File | null,
+    passport: null as File | null,
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -107,6 +113,61 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
               <option value="PARENT">PARENT</option>
               <option value="EMPLOYER">EMPLOYER</option>
             </select>
+          )}
+
+          {formData.roles === "EMPLOYER" && (
+            <>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                name="surname"
+                placeholder="Surname"
+                value={formData.surname}
+                onChange={handleInputChange}
+              />
+              <input
+                type="number"
+                name="age"
+                placeholder="Age"
+                value={formData.age}
+                onChange={handleInputChange}
+                min={15}
+                max={125}
+              />
+              <label className={classes.h7}>
+                Attach INN Image:
+                <input
+                  type="file"
+                  name="inn"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+              </label>
+              <label className={classes.h7}>
+                Attach Passport Image:
+                <input
+                  type="file"
+                  
+                  name="passport"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+              </label>
+              <textarea
+                name="resume"
+                placeholder="Resume"
+                value={formData.resume}
+                onChange={handleInputChange}
+                className={classes.textArea}
+              />
+
+            </>
           )}
 
           <button
