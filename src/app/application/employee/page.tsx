@@ -88,7 +88,7 @@ const EmployeePage = () => {
                 employeeData={employeeData}
                 handleInputChange={(e) => handleInputChange(e, 'employeeData')}
                 handleSubmit={handleSubmit}
-                handleFileChange={handleFileChange}
+                // handleFileChange={handleFileChange}
             />
         </div>
     );

@@ -15,7 +15,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                                                        employeeData,
                                                        handleInputChange,
                                                        handleSubmit,
-                                                       handleFileChange
+                                                    //    handleFileChange
                                                    }) => {
     return (
         <form onSubmit={handleSubmit} className={classes.employeeForm}>
@@ -34,14 +34,14 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                     </div>
                 ))}
                 <div className={classes.files}>
-                    <FileInput
+                    {/* <FileInput
                         label="Passport"
                         onChange={(e) => handleFileChange(e, 'Passport')}
                     />
                     <FileInput
                         label="Diploma"
                         onChange={(e) => handleFileChange(e, 'Diploma')}
-                    />
+                    /> */}
                 </div>
             </div>
             <button type="submit">Submit Application</button>
