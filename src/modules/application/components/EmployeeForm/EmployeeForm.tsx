@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from '@/app/application/employee/Employee.module.scss';
-import RegisterInput from "@/components/base/Input/InputsRegister";
-import FileInput from "@/components/base/FileInput/FileInput";
+import RegisterInput from "@/components/ui/Input/InputsRegister";
+import FileInput from "@/components/ui/FileInput/FileInput";
 
 interface EmployeeFormProps {
     employeeFields: { id: number; name: string; type: string; placeholder: string }[];

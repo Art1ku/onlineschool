@@ -1,9 +1,9 @@
 'use client'
-import Header from "@/components/base/Header/Header"
+import Header from "@/components/layout/Header/Header"
 import classes from './Employee.module.scss'
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import EmployeeForm from "@/components/base/EmployeeForm/EmployeeForm";
+import EmployeeForm from "@/modules/application/components/EmployeeForm/EmployeeForm";
 
 const EmployeePage = () => {
     const [formType, setFormType] = useState<'parent' | 'employee'>('parent');

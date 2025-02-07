@@ -1,10 +1,10 @@
 'use client'
-import Header from "@/components/base/Header/Header"
+import Header from "@/components/layout/Header/Header"
 import classes from './Parent.module.scss';
 import {useRouter} from "next/navigation";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import ParentForm from "@/components/base/ParentForm/ParentForm";
+import ParentForm from "@/modules/application/components/ParentForm/ParentForm";
 
 const ParentPage = () => {
 

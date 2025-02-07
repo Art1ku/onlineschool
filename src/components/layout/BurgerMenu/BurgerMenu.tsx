@@ -4,7 +4,7 @@ import classes from './Burger.module.scss'
 const BurgerMenu = () => {
     return (
         <div className={classes.burger}>
-            <img src='/logo.svg' alt=""/>
+            <img src='/burger_logo.svg' alt=""/>
             <p>menu</p>
         </div>
     );

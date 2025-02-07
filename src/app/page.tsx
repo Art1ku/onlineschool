@@ -1,13 +1,8 @@
 'use client'
 import { $url } from "@/api/api";
 import axios from "axios";
-import { useEffect } from "react";
 import { useState } from "react";
-import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
-import Header from "@/components/base/Header/Header";
-import Footer from "@/components/base/Footer/Footer";
-import "./page.module.css"
-import Application from "@/app/pages/application/page";
+import Header from "@/components/layout/Header/Header";
 import Link from "next/link";
 
 export default function Home() {
