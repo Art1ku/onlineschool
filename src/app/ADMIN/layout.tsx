@@ -15,6 +15,9 @@ export default function AdminLayout({children}: { children: React.ReactNode }) {
                 <div style={{padding: "20px"}}>
                     {children}
                 </div>
+                <div className={classes.end}>
+                    <p>Made with ❤ by Красавчики</p>
+                </div>
             </div>
         </div>
     );
