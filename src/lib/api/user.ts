@@ -1,26 +1,63 @@
-const API_BASE = "https://96a3-46-251-196-77.ngrok-free.app/api/v1";
+import axios from "axios";
 
-// Получение всех пользователей
+const API_BASE = "http://192.168.139.213:8080/api/v1/user";
+
+const user = {
+    username: "alisa",
+    password: "1234",
+};
+const authHeader = `Basic ${btoa(`${user.username}:${user.password}`)}`;
+
 export const fetchUsers = async () => {
-    const response = await fetch(`${API_BASE}/user/get-all-user`);
+    const response = await fetch(`${API_BASE}/get-all-users`);
     if (!response.ok) throw new Error("Ошибка при загрузке пользователей");
     return response.json();
 };
 
-// Удаление пользователя
 export const deleteUserById = async (id: number) => {
-    const response = await fetch(`${API_BASE}/user/${id}`, {
-        method: "DELETE",
+    await axios.delete(`${API_BASE}/delete-user-by-id/${id}`, {
+        headers: {Authorization: authHeader},
     });
-    if (!response.ok) throw new Error("Ошибка при удалении пользователя");
 };
 
-// Обновление роли пользователя
-export const updateUserRole = async (id: number, role: string) => {
-    const response = await fetch(`${API_BASE}/user/${id}/role`, {
-        method: "PUT",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({role}),
-    });
-    if (!response.ok) throw new Error("Ошибка при изменении роли");
+export const updateUserRole = async (userId: number, newRole: string) => {
+    try {
+        const response = await axios.patch(`${API_BASE}/update-user-role`, {
+            user_id: userId,
+            role: newRole
+        }, {
+            headers: {Authorization: authHeader}
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Ошибка при обновлении роли:", error);
+        throw error;
+    }
+};
+
+export const addRoleToUser = async (id: number, role: string) => {
+    try {
+        await axios.post(`${API_BASE}/add-role-to-user-by-title`, null, {
+            params: {user_id: id, title: role},
+            headers: {Authorization: authHeader}
+        });
+        console.log("Роль успешно добавлена!");
+    } catch (error) {
+        console.error("Ошибка при добавлении роли:", error);
+        throw error;
+    }
+};
+
+export const deleteRoleToUser = async (id: number, role: string) => {
+    try {
+        console.log("Удаляем роль:", { user_id: id, title: role });
+        await axios.delete(`${API_BASE}/delete-user-role-by-title`, {
+            params: { user_id: id, title: role },
+            headers: { Authorization: authHeader },
+        });
+        console.log("Роль успешно удалена!");
+    } catch (error) {
+        console.error("Ошибка при удалении роли:", error);
+        throw error;
+    }
 };
