@@ -1,5 +1,5 @@
 'use client';
-import Header from "@/components/base/Header/Header";
+import Header from "@/components/layout/Header/Header";
 import classes from './Application.module.scss';
 import Link from "next/link";
 

@@ -1,0 +1,16 @@
+.navbar {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  //border-bottom: 1px solid #424242;
+  box-shadow: #E9ECF0 1px 1px 1px;
+  background: white;
+
+  button {
+    background:none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}

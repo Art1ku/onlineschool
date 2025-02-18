@@ -1,0 +1,63 @@
+.user {
+  margin-top: 40px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: "Inter";
+
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-bottom: 24px;
+
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    .action_modal {
+      height: 28px;
+      width: 28px;
+      background: none;
+      border: none;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    thead {
+      background: #263544;
+      color: white;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr {
+      transition: background 0.2s;
+
+      &:nth-child(even) {
+        background: #f2f2f2;
+      }
+
+      &:hover {
+        background: #e9ecef;
+      }
+    }
+
+    .role {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+}
