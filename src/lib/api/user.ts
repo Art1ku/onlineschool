@@ -50,14 +50,20 @@ export const addRoleToUser = async (id: number, role: string) => {
 
 export const deleteRoleToUser = async (id: number, role: string) => {
     try {
-        console.log("Удаляем роль:", { user_id: id, title: role });
         await axios.delete(`${API_BASE}/delete-user-role-by-title`, {
-            params: { user_id: id, title: role },
-            headers: { Authorization: authHeader },
+            params: {title: role, user_id: id},
+            headers: {Authorization: authHeader},
         });
+        console.log(role)
         console.log("Роль успешно удалена!");
     } catch (error) {
-        console.error("Ошибка при удалении роли:", error);
+        if (error.response) {
+            console.error("Ошибка от сервера:", error.response.data);
+        } else if (error.request) {
+            console.error("Ошибка запроса:", error.request);
+        } else {
+            console.error("Ошибка при настройке запроса:", error.message);
+        }
         throw error;
     }
 };

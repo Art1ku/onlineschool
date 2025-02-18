@@ -6,6 +6,7 @@ interface User {
     name: string;
     email: string;
     role: string;
+    roles: { id: number; title: string }[];
 }
 
 interface Props {
@@ -16,9 +17,10 @@ interface Props {
     roles: string[];
     onChangeRole: (id: number, newRole: string) => void;
     addRoleToUser: (id: number, role: string) => void;
+    deleteRoleFromUser: (id: number, role: string) => void;
 }
 
-const UserModal: React.FC<Props> = ({ isOpen, user, onClose, onDelete, onChangeRole, roles, addRoleToUser }) => {
+const UserModal: React.FC<Props> = ({ isOpen, user, onClose, onDelete, onChangeRole, roles, addRoleToUser, deleteRoleFromUser }) => {
     if (!isOpen || !user) return null;
 
     const [selectedRole, setSelectedRole] = useState(user.role);
@@ -29,6 +31,12 @@ const UserModal: React.FC<Props> = ({ isOpen, user, onClose, onDelete, onChangeR
             onClose(); // Закрываем модалку
         }
     };
+
+    const handleDeleteRole = (role: string) => {
+        deleteRoleFromUser(user.id, role);
+    };
+
+    console.log(selectedRole)
 
     return (
         <div className={styles["modal-overlay"]}>
@@ -53,6 +61,19 @@ const UserModal: React.FC<Props> = ({ isOpen, user, onClose, onDelete, onChangeR
                         ))}
                     </select>
                     <button onClick={handleAddRole}>Добавить роль</button>
+                </div>
+
+                {/* Удаление роли */}
+                <div>
+                    <label>Удалить роль:</label>
+                    <select value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>
+                        {user.roles.map((role) => (
+                            <option key={role.id} value={role.title}>
+                                {role.title}
+                            </option>
+                        ))}
+                    </select>
+                    <button onClick={() => handleDeleteRole(selectedRole)}>Удалить роль</button>
                 </div>
             </div>
         </div>
