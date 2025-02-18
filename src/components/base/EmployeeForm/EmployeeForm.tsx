@@ -8,6 +8,7 @@ interface EmployeeFormProps {
     employeeData: { [key: string]: string };
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
+    handleFileChange: (e: React.ChangeEvent<HTMLInputElement>, fileKey: 'Diploma' | 'Passport') => void;
 }
 
 const EmployeeForm: React.FC<EmployeeFormProps> = ({
@@ -24,7 +25,6 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                 {employeeFields.map((field) => (
                     <div key={field.id}>
                         <RegisterInput
-                            key={field.id}
                             type={field.type}
                             name={field.name}
                             placeholder={field.placeholder}
@@ -34,14 +34,8 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                     </div>
                 ))}
                 <div className={classes.files}>
-                    <FileInput
-                        label="Passport"
-                        onChange={(e) => handleFileChange(e, 'Passport')}
-                    />
-                    <FileInput
-                        label="Diploma"
-                        onChange={(e) => handleFileChange(e, 'Diploma')}
-                    />
+                    <FileInput label="Passport" onChange={(e) => handleFileChange(e, 'Passport')} />
+                    <FileInput label="Diploma" onChange={(e) => handleFileChange(e, 'Diploma')} />
                 </div>
             </div>
             <button type="submit">Submit Application</button>

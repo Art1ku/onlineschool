@@ -34,6 +34,7 @@ export default function Home() {
   return (
     <>
       <Header></Header>
+      <Link href='/authentication'>authentication</Link>
       <Link href="/application">Go to Application</Link>
     </>
   );
