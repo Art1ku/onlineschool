@@ -3,12 +3,7 @@ import Header from "@/components/layout/Header/Header"
 import classes from './Employee.module.scss'
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-<<<<<<< HEAD
 import EmployeeForm from "@/modules/application/components/EmployeeForm/EmployeeForm";
-=======
-import EmployeeForm from "@/components/base/EmployeeForm/EmployeeForm";
-import { $url } from "@/api/api";
->>>>>>> 524dd1a739b25d3eb5d95a316245e2e339b78cdc
 
 const EmployeePage = () => {
     const [formType, setFormType] = useState<'parent' | 'employee'>('parent');

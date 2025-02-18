@@ -1,10 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
 import styles from "./News.module.scss";
-import Header from "@/components/base/Header/Header";
-import Footer from "@/components/base/Footer/Footer";
 import Container from "@/components/base/Container/Container";
 import { $url } from "@/api/api";
+import Footer from "@/components/layout/Footer/Footer";
+import Header from "@/components/layout/Header/Header";
 
 interface NewsItem {
   newsTitle: string;
