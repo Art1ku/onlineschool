@@ -1,0 +1,105 @@
+$primary-color: #007bff; // синий
+$secondary-color: #000000; // черный
+$background-color: #ffffff; // белый
+$placeholder-color: #d3d3d3; // светло-серый для плейсхолдеров
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 40px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.newsCard {
+  background-color: $background-color;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+.newsImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.newsContent {
+  padding: 15px;
+}
+
+.newsTitle {
+  font-size: 18px;
+  color: $secondary-color;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.newsText {
+  font-size: 14px;
+  color: $secondary-color;
+}
+
+.mainTitle {
+  font-size: 60px;
+  color: $secondary-color;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding-top: 100px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .newsTitle {
+    font-size: 16px;
+  }
+
+  .newsText {
+    font-size: 13px;
+  }
+
+  .mainTitle {
+    font-size: 36px;
+  }
+}
+
+/* Плейсхолдеры для лоадера */
+.placeholderImage {
+  width: 100%;
+  height: 200px;
+  background-color: $placeholder-color;
+  border-radius: 8px;
+}
+
+.placeholderContent {
+  padding: 15px;
+}
+
+.placeholderTitle {
+  width: 60%;
+  height: 20px;
+  background-color: $placeholder-color;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.placeholderText {
+  width: 100%;
+  height: 15px;
+  background-color: $placeholder-color;
+  border-radius: 4px;
+}
+
+/* Стили для контейнера */
+.container {
+  padding-top: 40px; // Отступ сверху от хедера
+  padding-bottom: 40px; // Отступ снизу от футера
+}

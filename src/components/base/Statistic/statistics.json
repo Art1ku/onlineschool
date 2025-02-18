@@ -1,0 +1,13 @@
+[
+    { "description": "Number of Teachers", "value": 25 },
+    { "description": "Students Enrolled", "value": 1200 },
+    { "description": "Students Abroad", "value": 150 },
+    { "description": "Graduates This Year", "value": 300 },
+    { "description": "New Admissions", "value": 450 },
+    { "description": "Departments", "value": 8 },
+    { "description": "Courses Offered", "value": 50 },
+    { "description": "Research Projects", "value": 12 },
+    { "description": "IT projects", "value": 17 },
+    { "description": "Rate in World university", "value": 10 }
+  ]
+  
