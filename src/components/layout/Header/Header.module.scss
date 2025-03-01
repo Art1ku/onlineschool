@@ -1,8 +1,300 @@
-.header {
+.wrapper {
+  width: 100%;
+  height: 12vh;
+  background: rgba(0, 0, 0, 0.454);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 20px;
+  color: white;
+}
+
+.insideWrapper{
+  width: 100%;
+  height: 12vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  img {
-    padding-left: 20px ;
+  .LogoWrapper{
+    text-align: center;
+    align-items: center;
+    display: flex;
+
+
+    .LogoName{
+      font-size: 4vw;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgb(8, 0, 255);
+      margin: 0;
+
+    }
+    .LogoNameHighLight{
+      font-size: 4vw;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: white;
+      margin: 0;
+
+    }
+  }
+
+  .RegWrapper{
+    height: 65%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    border: 1px white solid;
+    border-radius: 30px;
+
+
+    .LogIn{
+
+
+
+      font-size: 2vw;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: white;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .Register{
+
+
+
+      font-size: 2vw;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: white;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .divider{
+      height: 4vh;
+      width: 0;
+      border: 0.01vw solid rgb(200, 200, 200);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Адаптив для телефонов 375px */
+@media (max-width: 375px) {
+  .insideWrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 6vw;
+      }
+    }
+
+    .RegWrapper {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+
+
+      .LogIn,
+      .Register {
+        font-size: 4vw;
+      }
+
+      .divider {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Адаптив для телефонов 450px */
+@media (min-width: 376px) and (max-width: 450px) {
+  .wrapper{
+    height: auto;
+  }
+  .insideWrapper {
+    flex-direction: column;
+    text-align: left;
+    height: auto;
+    padding: 10px 0;
+
+    .LogoWrapper {
+      text-align: left;
+      .LogoName {
+        font-size: 7vw;
+        text-align: left;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+        text-align: left;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 70%;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 20px;
+
+      .LogIn,
+      .Register {
+        font-size: 5.6vw;
+      }
+
+      .divider {
+        height: 2.5vh;
+      }
+    }
+  }
+}
+
+/* Адаптив 620px */
+@media (min-width: 450px) and (max-width: 650px) {
+  .insideWrapper {
+    flex-direction: row;
+    padding: 0 10px;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 7vw;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 45%;
+      height: 6vh;
+
+      .LogIn,
+      .Register {
+        font-size: 3.5vw;
+      }
+
+      .divider {
+        height: 3vh;
+        border-width: 0.02vw;
+      }
+    }
+  }
+}
+
+
+/* Адаптив для планшета 980px */
+@media (min-width: 620px) and (max-width: 980px) {
+  .insideWrapper {
+    flex-direction: row;
+    padding: 0 10px;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 7vw;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 35%;
+      height: 6vh;
+
+      .LogIn,
+      .Register {
+        font-size: 2.5vw;
+      }
+
+      .divider {
+        height: 3vh;
+        border-width: 0.02vw;
+      }
+    }
+  }
+}
+
+/* Адаптив для экранов 1500px и выше */
+@media (min-width: 1500px) {
+  .insideWrapper {
+
+    .LogoWrapper {
+      .LogoName {
+      }
+    }
+
+    .RegWrapper {
+
+      .LogIn,
+      .Register {
+      }
+
+      .divider {
+      }
+    }
   }
 }
