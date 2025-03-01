@@ -1,0 +1,29 @@
+.filter {
+  display: flex;
+  gap: 40px;
+  margin-top: 43px;
+}
+.filter .search {
+  width: 300px;
+  padding: 15px 26px;
+  outline: none;
+  border: 1px solid rgba(66, 66, 66, 0.29);
+  transition: 0.3s ease-in-out;
+  border-radius: 3px;
+  font-size: 15px;
+}
+.filter .search:focus {
+  border: 1.25px solid #424242;
+}
+.filter .search::-moz-placeholder {
+  font-size: 15px;
+}
+.filter .search::placeholder {
+  font-size: 15px;
+}
+.filter .filter_select {
+  border: 1px solid rgba(66, 66, 66, 0.29);
+  outline: none;
+  padding: 11px 13px;
+  font-size: 15px;
+}/*# sourceMappingURL=UserFilters.module.css.map */

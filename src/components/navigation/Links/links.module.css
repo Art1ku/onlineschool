@@ -1,0 +1,25 @@
+.links {
+  padding: 6px 20px 6px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-weight: 200;
+}
+.links div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.links .arrow {
+  width: 10px;
+}
+
+.links:hover {
+  scale: 1.025;
+  background: #212D3A;
+}
+
+.links:active {
+  scale: 1;
+}/*# sourceMappingURL=links.module.css.map */

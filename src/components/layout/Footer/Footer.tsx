@@ -1,4 +1,4 @@
-import { Container } from "node_modules/@mui/material/index"
+import { Container } from "../../../../node_modules/@mui/material/index"
 import classes from "./Footer.module.scss"
 
 export default function Footer(){

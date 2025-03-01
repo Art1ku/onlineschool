@@ -1,7 +1,7 @@
 import cl from "./Header.module.scss"
 import school from "../../../../public/images/Group 15.png"
 import menu from "../../../../public/images/Group 1.png"
-import Link from "node_modules/next/link"
+import Link from "../../../../node_modules/next/link"
 
 export default function Header() {
 

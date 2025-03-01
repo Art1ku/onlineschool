@@ -1,0 +1,31 @@
+.dashboard_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+.dashboard_header .logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.dashboard_header .logo img {
+  padding: 7px;
+  border-radius: 5px;
+}
+.dashboard_header .logo h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #85898F;
+}
+.dashboard_header .bread_crumbs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+  font-size: 11px;
+  color: #85898F;
+}
+.dashboard_header .bread_crumbs img {
+  height: 100%;
+}/*# sourceMappingURL=style.module.css.map */

@@ -1,0 +1,14 @@
+.navbar {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: #E9ECF0 1px 1px 1px;
+  background: white;
+}
+.navbar button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}/*# sourceMappingURL=navbar.module.css.map */

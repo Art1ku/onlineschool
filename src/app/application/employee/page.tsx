@@ -1,23 +1,30 @@
-'use client'
-import Header from "@/components/layout/Header/Header"
-import classes from './Employee.module.scss'
-import React, {useEffect, useState} from "react";
+'use client';
+
+import Header from "@/components/layout/Header/Header";
+import classes from './Employee.module.css';
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeForm from "@/modules/application/components/EmployeeForm/EmployeeForm";
+import { $url } from "@/api/api";
 
 const EmployeePage = () => {
     const [formType, setFormType] = useState<'parent' | 'employee'>('parent');
 
     const [employeeData, setEmployeeData] = useState({
-        employeeName: '',
-        employeeId: '',
-        position: '',
-        department: '',
+        name: '',
+        surname: '',
+        patronymic: '',
+        age: 0,
+        phoneNumber: '',
+        email: '',
     });
+
     const [files, setFiles] = useState({
         parentPhoto: null,
         childBirthCertificate: null,
         childRegistrationBook: null,
+        resume: '',
+        passport: '',
     });
 
     const [isClient, setIsClient] = useState(false);
@@ -29,65 +36,76 @@ const EmployeePage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const formData = new FormData();
-        if (formType === 'employee') {
-            Object.entries(employeeData).forEach(([key, value]) => formData.append(key, value));
-        }
-
-        Object.entries(files).forEach(([key, value]) => {
-            if (value) formData.append(key, value as Blob);
-        });
-
         try {
-            const response = await axios.post('/api/v1/application', formData, {headers: {'Content-Type': 'multipart/form-data'}});
-            alert('Application submitted successfully!');
-        } catch (error) {
-            alert('Failed to submit application.');
+            const bitsResponse = await axios.get(`${$url}/api/v1/bitsforwork/getAllBits`);
+            if (bitsResponse.status !== 200) {
+                throw new Error('Ошибка при получении данных из bitsforwork/getAllBits');
+            }
+            const bitsData = bitsResponse.data;
+
+            const formData = new FormData();
+            Object.entries(employeeData).forEach(([key, value]) => {
+                formData.append(key, String(value));
+            });
+
+            Object.entries(files).forEach(([key, value]) => {
+                if (value) formData.append(key, value);
+            });
+
+            formData.append("bitsData", JSON.stringify(bitsData));
+
+            const rep = await axios.post(`${$url}/api/v1/employee/createBidForWork`, formData);
+            
+            if (rep.status === 200) {
+                console.log(rep.data);
+                alert("Application submitted successfully!");
+            }
+        } catch (error: any) {
+            console.error("Ошибка при отправке заявки:", error);
+            alert("Ошибка при отправке заявки");
         }
     };
 
-    const handleInputChange = (
+    const handleFileChange = (
         e: React.ChangeEvent<HTMLInputElement>,
-        type: 'parentData' | 'childData' | 'employeeData'
+        fileKey: keyof typeof files
     ) => {
-        const {name, value} = e.target;
-
-         if (type === 'employeeData') {
-            setEmployeeData((prev) => ({...prev, [name]: value}));
+        const file = e.target.files ? e.target.files[0] : null;
+        if (file) {
+            setFiles((prev) => ({
+                ...prev,
+                [fileKey]: file,
+            }));
         }
     };
 
     const employeeFields = [
-        {id: 1, name: 'employeeName', type: 'text', placeholder: 'Employee Name'},
-        {id: 2, name: 'employeeId', type: 'text', placeholder: 'Employee ID'},
-        {id: 3, name: 'position', type: 'text', placeholder: 'Position'},
-        {id: 4, name: 'department', type: 'text', placeholder: 'Department'},
+        { id: 5, name: 'name', type: 'text', placeholder: 'Name' },
+        { id: 6, name: 'surname', type: 'text', placeholder: 'Surname' },
+        { id: 7, name: 'patronymic', type: 'text', placeholder: 'Patronymic' },
+        { id: 8, name: 'age', type: 'number', placeholder: 'Age' },
+        { id: 9, name: 'phoneNumber', type: 'text', placeholder: 'Phone Number' },
+        { id: 10, name: 'email', type: 'email', placeholder: 'Email' },
     ];
 
-    const handleFileChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        fileKey: 'parentPhoto' | 'childBirthCertificate' | 'childRegistrationBook'
-    ) => {
-        const file = e.target.files ? e.target.files[0] : null;
-        setFiles((prev) => ({
-            ...prev,
-            [fileKey]: file,
-        }));
-    };
+    const fileFields = [
+        { id: 1, name: 'resume', label: 'Resume' },
+        { id: 2, name: 'passport', label: 'Passport' },
+    ];
 
     if (!isClient) {
         return null;
     }
+
     return (
         <div className={classes.employee}>
-            <Header/>
+            <Header />
             <h2>Register Application</h2>
             <EmployeeForm
                 employeeFields={employeeFields}
                 employeeData={employeeData}
-                handleInputChange={(e) => handleInputChange(e, 'employeeData')}
-                handleSubmit={handleSubmit}
-                // handleFileChange={handleFileChange}
+                handleInputChange={() => {}}
+                fileFields={fileFields}
             />
         </div>
     );

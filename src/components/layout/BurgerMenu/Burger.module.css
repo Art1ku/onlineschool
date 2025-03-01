@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+.burger {
+  width: 157px;
+  height: 63px;
+  display: flex;
+  gap: 13px;
+  justify-content: center;
+  align-items: center;
+  background: #424242;
+}
+.burger img {
+  width: 37px;
+  height: 37px;
+}
+.burger p {
+  font-size: 24px;
+  text-transform: capitalize;
+  font-family: "Jua";
+  color: white;
+}/*# sourceMappingURL=Burger.module.css.map */
