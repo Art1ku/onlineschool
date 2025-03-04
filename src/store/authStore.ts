@@ -1,17 +1,23 @@
-import create from 'zustand'; // правильный импорт
+import { create } from 'zustand';
 
 interface AuthState {
-    accessToken: string | null;
-    refreshToken: string | null;
-    role: string | null;
-    setAuth: (accessToken: string, refreshToken: string, role: string) => void;
+    user: any;
+    token: string | null;
+    setUser: (user: any) => void;
+    setToken: (token: string | null) => void;
     logout: () => void;
+    email: string;
+    setEmail: (email: string) => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-    accessToken: null,
-    refreshToken: null,
-    role: null,
-    setAuth: (accessToken, refreshToken, role) => set({ accessToken, refreshToken, role }),
-    logout: () => set({ accessToken: null, refreshToken: null, role: null }),
+const useAuthStore = create<AuthState>((set) => ({
+    user: null,
+    token: null,
+    setUser: (user) => set({ user }),
+    setToken: (token) => set({ token }),
+    logout: () => set({ user: null, token: null }),
+    email: '',
+    setEmail: (email) => set({ email })
 }));
+
+export default useAuthStore;

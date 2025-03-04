@@ -15,7 +15,7 @@ export default function Header() {
                         <h1 className={cl.logo_text}>School</h1>
                     </div>
                     <div className={cl.base}>
-                        <Link className={cl.login} href={"/registration"}><h1>Log in</h1></Link>
+                        <Link className={cl.login} href={"/auth"}><h1>Log in</h1></Link>
                         <button className={cl.menu}><img src={menu.src}/><h1>menu</h1></button>
                     </div>
                 </div>

@@ -2,26 +2,17 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import  useAuthStore  from '@/store/authStore';
+import useAuthStore from '@/store/authStore';
 
-const Dashboard = () => {
-    const { isAuthenticated, setIsAuthenticated } = useAuthStore();
+export default function Dashboard() {
+    const { token } = useAuthStore();
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem('accessToken');
         if (!token) {
-            router.push('/');
-        } else {
-            setIsAuthenticated(true);
+            router.push('/auth');
         }
-    }, [router, setIsAuthenticated]);
-
-    if (!isAuthenticated) {
-        return <p>Проверка авторизации...</p>;
-    }
+    }, [token]);
 
     return <h1>Добро пожаловать в личный кабинет!</h1>;
-};
-
-export default Dashboard;
+}

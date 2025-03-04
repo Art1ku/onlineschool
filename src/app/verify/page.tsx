@@ -1,34 +1,47 @@
+'use client';
+
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { verifyEmail } from '@/api/authApi';
+import { useRouter } from 'next/navigation';
+import  useAuthStore  from '@/store/authStore';
 
-const VerifyEmailPage = () => {
+export default function Verify() {
+    const [verificationCode, setCode] = useState('');
+    const [error, setError] = useState('');
     const router = useRouter();
-    const { email } = router.query; // Получаем email из query params
-    const [code, setCode] = useState('');
+    const { email } = useAuthStore(); // Берем email из Zustand
 
-    const handleVerify = async () => {
+    const handleVerify = async (e: React.FormEvent) => {
+        e.preventDefault();
         try {
-            const response = await verifyEmail(email as string, code);
-            console.log('Email verified:', response);
-            // Перенаправить на страницу после успешной верификации
-            router.push('/dashboard');
-        } catch (error) {
-            console.error('Ошибка при верификации:', error.message);
+            const res = await fetch('http://localhost:8080/api/v1/auth/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, verificationCode }), // Отправляем email и код
+            });
+
+            const data = await res.json();
+            console.log(data);
+
+            if (!res.ok) throw new Error(data.message || 'Ошибка верификации');
+
+            router.push('/auth'); // После успешной верификации - редирект в авторизацию
+        } catch (err: any) {
+            setError(err.message);
         }
     };
 
     return (
-        <div>
+        <form onSubmit={handleVerify}>
+            <h1>Подтверждение почты</h1>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p>Мы отправили код на: <strong>{email}</strong></p>
             <input
                 type="text"
-                value={code}
+                placeholder="Введите код"
+                value={verificationCode}
                 onChange={(e) => setCode(e.target.value)}
-                placeholder="Verification Code"
             />
-            <button onClick={handleVerify}>Verify Email</button>
-        </div>
+            <button type="submit">Подтвердить</button>
+        </form>
     );
-};
-
-export default VerifyEmailPage;
+}
