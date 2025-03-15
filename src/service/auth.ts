@@ -47,7 +47,7 @@ async function refreshAccessToken(token: {
             ...token,
             accessToken: resData.accessToken,
             refreshToken: resData.refreshToken,
-            accessTokenExpires: resData.expireIn * 1000,
+            accessTokenExpires: resData.expireIn,
         }
     } catch (error) {
         console.error(error)

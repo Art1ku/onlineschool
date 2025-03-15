@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
                 return {
                     accessToken: jwtUser.accessToken,
                     refreshToken: jwtUser.refreshToken,
-                    accessTokenExpires: jwtUser.accessTokenExpires * 1000,
+                    accessTokenExpires: jwtUser.accessTokenExpires,
                     user
                 };
             }
