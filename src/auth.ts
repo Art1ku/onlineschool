@@ -31,6 +31,7 @@ export const authOptions: NextAuthOptions = {
                             "Authorization": `Bearer ${accessToken}`
                         }
                     })
+                    console.log(responseUserDetails,'user Detail')
 
                     const userDetails = await responseUserDetails.json();
 
@@ -54,6 +55,9 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     session: {strategy: 'jwt'},
+    pages: {
+        signIn: "/auth/signin"
+    },
     callbacks: {
         async jwt({token, user}) {
             const jwtUser = user as JWTUser
