@@ -1,48 +1,112 @@
-.parent {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-family: "Jua";
-  margin-bottom: 50px;
 
-  h2 {
-    font-size: 36px;
-    margin: 68px 0 47px 0;
-  }
-
-  button {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    font-size: 22px;
-    border-radius: 8px;
-    border: none;
-    font-family: "Jua";
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-}
-
-.forms {
+.main {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 100px;
-  margin-bottom: 30px;
+  align-items: center;
+  height: 150vh;
+  padding-right: 100px;
+  padding: 20px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    139deg,
+    rgba(2, 0, 36, 1) 5%,
+    rgba(60, 35, 127, 1) 42%,
+    rgba(15, 50, 155, 1) 67%,
+    rgba(0, 212, 255, 1) 100%
+  );
 
-  .parentInput {
-    display: flex;
-    flex-direction: column;
-    gap: 17px;
-  }
 
-  .childInput {
-    display: flex;
-    flex-direction: column;
-    gap: 17px;
+  .parentpageContainer {
 
-    .files {
-      display: flex;
-      gap: 13px;
+
+    .parentpageForm {
+      width: 140%;
+      
+      background-color: #ffffff;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 20px;
+        background: rgb(60,35,127);
+  background: linear-gradient(139deg,
+  rgba(60, 35, 127, 1) 12%,
+  rgba(15, 50, 155, 1) 67%,
+  rgba(0, 212, 255, 1) 100%);    
+      
+
+      .paretpageInput {
+
+
+        .wrapperInputWithLabel {
+          margin-bottom: 20px;
+          position: relative;
+
+          &:focus-within {
+            .input {
+              outline: 1px solid #41419a;
+              border: 1px solid #41419a;
+            }
+
+            .defaultPlaceholder {
+              position: absolute;
+              top: -6px;
+              left: 15px;
+              color: black;
+              transition: all 0.3s ease;
+              pointer-events: none;
+              transform: translateY(-50%);
+
+            }
+          }
+
+          .input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #202020;
+            outline: 1px solid transparent;
+            border-radius: 4px;
+            margin-top: 5px;
+            padding-top: 10px;
+            border-radius: 20px;
+            padding-left: 10px;
+            padding-right: 150px;
+            padding-bottom: 10px;
+          }
+
+          .defaultPlaceholder {
+            position: absolute;
+            top: 4px;
+            left: 15px;
+            color: black;
+            transition: all 0.3s ease;
+            pointer-events:none;
+            transform: translateY( -50% );
+            background-color: white;
+          }
+
+          .flyingPlaceholder {
+            top: -10px;
+            font-size: 14px;
+            color: black;
+            background-color: white;
+            transform:translateY(-50%);
+          }
+        }
+      }
+
+      button {
+        border: none;
+        padding: 20px;
+        transform: scale(1);
+        transition: 0.3s all;
+        border-radius: 8px;
+
+        &:active {
+          transform: scale(0.95);
+          transition: 0.3s all;
+        }
+      }
     }
   }
 }
+
+
