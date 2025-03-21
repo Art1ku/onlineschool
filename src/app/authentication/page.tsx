@@ -1,5 +1,5 @@
-import Header from "@/components/base/Header/Header";
-import RegisterInput from "@/components/base/Input/InputsRegister";
+import Header from "@/components/layout/Header/Header";
+import RegisterInput from "@/components/ui/Input/InputsRegister";
 import classes from './Authentication.module.scss'
 
 const Page = () => {
