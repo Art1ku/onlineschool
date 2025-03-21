@@ -1,6 +1,7 @@
 .wrapper{
-    height: 42vh;
+    height: 35vh;
     width: 100%;
+    padding-top: 1.5vw;
     background: linear-gradient(153deg, rgba(28,24,69,1) 0%, rgba(6,13,23,1) 50%, rgba(26,35,47,1) 100%);
 }
 
@@ -20,8 +21,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding-top: 4%;
-    padding-bottom: 2%;
 }
 
 .part{
