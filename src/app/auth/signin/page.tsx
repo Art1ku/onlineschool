@@ -5,6 +5,7 @@ import {signIn, useSession} from "next-auth/react";
 import { useRouter } from "next/navigation";
 import classes from "@/styles/auth.module.scss";
 import Link from "next/link";
+import Container from "@/components/base/Container/Container";
 
 const Page = () => {
     const [email, setEmail] = useState("");

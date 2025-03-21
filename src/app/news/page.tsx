@@ -5,6 +5,7 @@ import Container from "@/components/base/Container/Container";
 import { $url } from "@/api/api";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
+import { useSession } from "next-auth/react";
 
 interface NewsItem {
   newsTitle: string;
@@ -32,6 +33,9 @@ export default function News() {
 
     fetchNews();
   }, []);
+
+      const session = useSession()
+      console.log(session)
 
   return (
     <>
