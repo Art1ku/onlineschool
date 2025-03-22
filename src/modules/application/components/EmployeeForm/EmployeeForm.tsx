@@ -7,6 +7,7 @@ interface EmployeeFormProps {
     employeeData: { [key: string]: string | number };
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
+    handleFileChange: (e: React.ChangeEvent<HTMLInputElement>, fileKey: 'Diploma' | 'Passport') => void;
 }
 
 const EmployeeForm: React.FC<EmployeeFormProps> = ({
@@ -23,6 +24,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                     <div key={field.id}>
                         <RegisterInput
                             type={field.type} 
+                            type={field.type}
                             name={field.name}
                             placeholder={field.placeholder}
                             value={employeeData[field.name] || ""}

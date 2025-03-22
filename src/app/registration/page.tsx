@@ -39,8 +39,6 @@ export default function Registration() {
       if (response.status === 200) {
         const role = formData.roles[0].title;
         setMessage('Registration successful! Redirecting...');
-        
-        // Перенаправление в зависимости от роли
         if (role === 'PARENT') {
           router.push('/application/parent');
         } else if (role === 'EMPLOYEE') {

@@ -29,7 +29,7 @@ const ParentPage = () => {
         setParentData((prev) => ({
             ...prev,
             [name]: value
-        }));фц
+        }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {

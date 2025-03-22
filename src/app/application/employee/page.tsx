@@ -15,6 +15,21 @@ const EmployeePage = () => {
         email: '',
         resume: '',
         passport: ''
+
+
+const EmployeePage = () => {
+    const [employeeData, setEmployeeData] = useState({
+        infoOfEmployee: '',
+        documentsOfEmployee: '',
+        bedStatus: '',
+        email: '',
+    });
+    const [files, setFiles] = useState<{
+        childBirthCertificate: File | null;
+        childRegistrationBook: File | null;
+    }>({
+        childBirthCertificate: null,
+        childRegistrationBook: null,
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,11 +55,20 @@ const EmployeePage = () => {
             } else {
                 alert("Ошибка при отправке заявки.");
             }
+        const formData = new FormData();
+        Object.entries(employeeData).forEach(([key, value]) => formData.append(key, value));
+        Object.entries(files).forEach(([key, value]) => {
+            if (value) formData.append(key, value);
+        });
+
+        try {
+            await axios.post('/api/v1/employee/createBidForWork', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+            alert('Application submitted successfully!');
         } catch (error) {
             console.error("Ошибка при отправке заявки:", error);
             alert("Ошибка при отправке заявки.");
         }
-    };
+    }
 
     return (
         <div className={cl.EmployeePage}>
@@ -78,7 +102,7 @@ const EmployeePage = () => {
                 </form>
             </div>
         </div>
-    );
+   );
 };
 
-export default EmployeePage;    
+export default EmployeePage

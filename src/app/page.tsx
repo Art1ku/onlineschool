@@ -11,6 +11,7 @@ import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
 import Hero_3 from "@/components/base/main/section_hero_3/Hero_3";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
+import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
 
 export default function Home() {
 
@@ -25,7 +26,7 @@ export default function Home() {
                 {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />*/}
                 <Statistic></Statistic>
                 <Hero_2/>
-                <Hero_3/>
+                <NewsBlock></NewsBlock>
                 <Footer/>
             </div>
         </>

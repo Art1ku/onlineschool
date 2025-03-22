@@ -1,7 +1,11 @@
-$primary-color: #007bff; // синий
-$secondary-color: #000000; // черный
-$background-color: #ffffff; // белый
-$placeholder-color: #d3d3d3; // светло-серый для плейсхолдеров
+$primary-color: #007bff; 
+$secondary-color: #000000; 
+$background-color: #ffffff; 
+$placeholder-color: #d3d3d3;
+
+.wrapper{
+  min-height: 100vh;
+}
 
 .newsGrid {
   display: grid;
@@ -71,7 +75,7 @@ $placeholder-color: #d3d3d3; // светло-серый для плейсхол�
   }
 }
 
-/* Плейсхолдеры для лоадера */
+
 .placeholderImage {
   width: 100%;
   height: 200px;
@@ -98,8 +102,3 @@ $placeholder-color: #d3d3d3; // светло-серый для плейсхол�
   border-radius: 4px;
 }
 
-/* Стили для контейнера */
-.container {
-  padding-top: 40px; // Отступ сверху от хедера
-  padding-bottom: 40px; // Отступ снизу от футера
-}

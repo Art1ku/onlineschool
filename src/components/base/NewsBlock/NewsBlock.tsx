@@ -19,7 +19,7 @@ export default function NewsBlock() {
     const [news, setNews] = useState<NewsItem[]>([]);
 
     useEffect(() => {
-        fetch(`${$url}/api/v1/news/detAllNews`) // Замените на реальный API
+        fetch(`${$url}/api/v1/news/detAllNews`) 
             .then((res) => res.json())
             .then((data) => setNews(data.slice(0, 10)))
             .catch((error) => console.error("Error fetching news:", error));

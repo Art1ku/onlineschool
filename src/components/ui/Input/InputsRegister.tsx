@@ -11,6 +11,7 @@ interface RegisterInputProps {
 }
 
 const RegisterInput: React.FC<RegisterInputProps> = ({ type, name, placeholder, value, onChange }) => {
+    console.log(onChange)
     return (
         <div>
             <input
