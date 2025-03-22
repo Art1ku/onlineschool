@@ -8,6 +8,9 @@ export default function Header() {
 
     const session = useSession()
     console.log(session)
+
+
+
     return (
         <>
             <div className={cl.header}>
