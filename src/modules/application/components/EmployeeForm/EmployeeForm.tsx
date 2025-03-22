@@ -16,7 +16,6 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                                                        employeeData,
                                                        handleInputChange,
                                                        handleSubmit,
-                                                    //    handleFileChange
                                                    }) => {
     return (
         <form onSubmit={handleSubmit} className={classes.employeeForm}>

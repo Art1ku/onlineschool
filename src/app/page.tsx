@@ -11,6 +11,7 @@ import Hero_3 from "@/components/base/main/section_hero_3/Hero_3";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
 import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
+import BlockLinks from "@/components/base/BlockLinks/BlockLinks";
 
 export default function Home() {
 
@@ -35,7 +36,7 @@ export default function Home() {
                     <NewsBlock></NewsBlock>
                 </section>
                 <section id="section5">
-
+                    <BlockLinks></BlockLinks>
                 </section>
                 <Footer/>
             </div>

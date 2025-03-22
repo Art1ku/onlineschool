@@ -71,7 +71,7 @@ export default function Header() {
                             <a href="#section2" className={classes.anchor}>Our statistic</a>
                             <a href="#section3" className={classes.anchor}>School system</a>
                             <a href="#section4" className={classes.anchor}>News</a>
-                            <a href="#section5" className={classes.anchorL}>Section 5</a>
+                            <a href="#section5" className={classes.anchorL}>Info</a>
                         </div>
                     </div>
                 </Container>
