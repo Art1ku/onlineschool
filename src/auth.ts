@@ -24,6 +24,8 @@ export const authOptions: NextAuthOptions = {
                 try {
                     const resData = await requestTokenAuthorize<ReponseUserToken>(data);
                     const {accessToken, refreshToken, expireIn} = resData;
+                    console.log('j3orihvbr');
+                    
                     const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
                         method: "GET",
                         headers: {
@@ -31,9 +33,9 @@ export const authOptions: NextAuthOptions = {
                             "Authorization": `Bearer ${accessToken}`
                         }
                     })
-                    console.log(responseUserDetails,'user Detail')
 
                     const userDetails = await responseUserDetails.json();
+                    console.log(userDetails,'user Detail')
 
                     const {username, email, id} = userDetails
 
