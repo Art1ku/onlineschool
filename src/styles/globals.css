@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura\ Book\ font.ttf");
+}
+
 :root {
 
 }
@@ -24,6 +29,7 @@ body {
 
 html {
   scrollbar-width: none; 
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
