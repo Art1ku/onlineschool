@@ -12,12 +12,14 @@ export interface CustomJWTType extends JWT {
     accessTokenExpires: number;
     accessToken: string;
     refreshToken: string;
+    details: any;
 }
 
 export interface JWTUser extends User {
     accessToken: string,
     refreshToken: string,
-    accessTokenExpires: number
+    accessTokenExpires: number,
+    details: any;
 }
 
 export interface ReponseUserToken {
