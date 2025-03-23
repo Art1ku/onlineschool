@@ -1,6 +1,7 @@
 'use client'
 import classes from "./Statistic.module.scss";
 import React, { useEffect, useState } from "react";
+import Container from "../Container/Container";
 
 interface StatisticData {
   description: string;
@@ -27,16 +28,20 @@ export default function Statistic() {
   }
 
   return (
-    <div className={classes.statisticsContainer}>
-      <h1 className={classes.title}>College Statistics</h1>
-      <div className={classes.statsGrid}>
-        {data.map((stat, index) => (
-          <div key={index} className={classes.statCard}>
-            <h2 className={classes.statValue}>{stat.value}</h2>
-            <p className={classes.statDescription}>{stat.description}</p>
+    <div className={classes.wrapper}>
+      <Container>
+        <div className={classes.statisticsContainer}>
+          <h1 className={classes.title}>College Statistics</h1>
+          <div className={classes.statsGrid}>
+            {data.map((stat, index) => (
+              <div key={index} className={classes.statCard}>
+                <h2 className={classes.statValue}>{stat.value}</h2>
+                <p className={classes.statDescription}>{stat.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </Container>
     </div>
   );
 }

@@ -1,21 +1,21 @@
 'use client'
 import Header from "@/components/layout/Header/Header"
 import classes from './Employee.module.scss'
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeForm from "@/modules/application/components/EmployeeForm/EmployeeForm";
 
 const EmployeePage = () => {
-    const [formType, setFormType] = useState<'parent' | 'employee'>('parent');
-
     const [employeeData, setEmployeeData] = useState({
-        employeeName: '',
-        employeeId: '',
-        position: '',
-        department: '',
+        infoOfEmployee: '',
+        documentsOfEmployee: '',
+        bedStatus: '',
+        email: '',
     });
-    const [files, setFiles] = useState({
-        parentPhoto: null,
+    const [files, setFiles] = useState<{
+        childBirthCertificate: File | null;
+        childRegistrationBook: File | null;
+    }>({
         childBirthCertificate: null,
         childRegistrationBook: null,
     });
@@ -30,62 +30,46 @@ const EmployeePage = () => {
         e.preventDefault();
 
         const formData = new FormData();
-        if (formType === 'employee') {
-            Object.entries(employeeData).forEach(([key, value]) => formData.append(key, value));
-        }
-
+        Object.entries(employeeData).forEach(([key, value]) => formData.append(key, value));
         Object.entries(files).forEach(([key, value]) => {
-            if (value) formData.append(key, value as Blob);
+            if (value) formData.append(key, value);
         });
 
         try {
-            const response = await axios.post('/api/v1/application', formData, {headers: {'Content-Type': 'multipart/form-data'}});
+            await axios.post('/api/v1/employee/createBidForWork', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             alert('Application submitted successfully!');
         } catch (error) {
             alert('Failed to submit application.');
         }
     };
 
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        type: 'parentData' | 'childData' | 'employeeData'
-    ) => {
-        const {name, value} = e.target;
-
-         if (type === 'employeeData') {
-            setEmployeeData((prev) => ({...prev, [name]: value}));
-        }
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setEmployeeData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const employeeFields = [
-        {id: 1, name: 'employeeName', type: 'text', placeholder: 'Employee Name'},
-        {id: 2, name: 'employeeId', type: 'text', placeholder: 'Employee ID'},
-        {id: 3, name: 'position', type: 'text', placeholder: 'Position'},
-        {id: 4, name: 'department', type: 'text', placeholder: 'Department'},
-    ];
-
-    const handleFileChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        fileKey: 'parentPhoto' | 'childBirthCertificate' | 'childRegistrationBook'
-    ) => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, fileKey: 'childBirthCertificate' | 'childRegistrationBook') => {
         const file = e.target.files ? e.target.files[0] : null;
-        setFiles((prev) => ({
-            ...prev,
-            [fileKey]: file,
-        }));
+        setFiles((prev) => ({ ...prev, [fileKey]: file }));
     };
 
     if (!isClient) {
         return null;
     }
+
     return (
         <div className={classes.employee}>
-            <Header/>
+            <Header />
             <h2>Register Application</h2>
             <EmployeeForm
-                employeeFields={employeeFields}
+                employeeFields={[
+                    { id: 1, name: 'infoOfEmployee', type: 'text', placeholder: 'Employee Info' },
+                    { id: 2, name: 'documentsOfEmployee', type: 'text', placeholder: 'Documents Info' },
+                    { id: 3, name: 'bedStatus', type: 'text', placeholder: 'Bed Status' },
+                    { id: 4, name: 'email', type: 'email', placeholder: 'Email' },
+                ]}
                 employeeData={employeeData}
-                handleInputChange={(e) => handleInputChange(e, 'employeeData')}
+                handleInputChange={handleInputChange}
                 handleSubmit={handleSubmit}
                 // handleFileChange={handleFileChange}
             />

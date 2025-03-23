@@ -3,14 +3,15 @@
 import {useState} from "react";
 
 import Slider from "@/components/base/Slider/Slider";
-import "./page.module.css"
 import Statistic from "@/components/base/Statistic/Statistic";
-import cl  from  "./page.module.css"
+import classes from "./main.module.css"
 import Hero_1 from "@/components/base/main/section_hero_1/Hero_1";
 import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
 import Hero_3 from "@/components/base/main/section_hero_3/Hero_3";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
+import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
+import BlockLinks from "@/components/base/BlockLinks/BlockLinks";
 
 export default function Home() {
 
@@ -18,14 +19,25 @@ export default function Home() {
 
     return (
         <>
-            <div className={cl.body}>
+            <div className={classes.body}>
                 <Header/>
                 <Slider></Slider>
-                <Hero_1/>
+                <section id="section1">
+                    <Hero_1/>
+                </section>
                 {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />*/}
-                <Statistic></Statistic>
-                <Hero_2/>
-                <Hero_3/>
+                <section id="section2">
+                    <Statistic></Statistic>
+                </section>
+                <section id="section3">
+                    <Hero_2/>
+                </section>
+                <section id="section4">
+                    <NewsBlock></NewsBlock>
+                </section>
+                <section id="section5">
+                    <BlockLinks></BlockLinks>
+                </section>
                 <Footer/>
             </div>
         </>

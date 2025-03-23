@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.wrapper{
+    width: 100%;
+    height: 60\5vh;
+    background: rgb(227, 227, 227);
+}
+.insideWrapper{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 0;
+    text-align: center;
+}
+.TitleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 15%;
+}
+
+.Title {
+    font-size: 3vw;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #000;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.BlocksWrapper{
+    width: 100%;
+    height: 77%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block1{
+    width: 23%;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    .BlockImg{
+        height: 70%;
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: url("https://degrees.snu.edu/hs-fs/hubfs/AdobeStock_518657595.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+.block2{
+    width: 23%;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    .BlockImg{
+        height: 70%;
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: url("https://www.alleducationschools.com/wp-content/uploads/2018/06/what-kind-of-teachers-are-in-demand.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+.block3{
+    width: 23%;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    .BlockImg{
+        height: 70%;
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: url("https://hub.yamaha.com/images/easyblog_articles/521/b2ap3_large_male_teacher_white_board_pointing_pexels.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+.block4{
+    width: 23%;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    .BlockImg{
+        height: 70%;
+        width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background: url("https://www.brookings.edu/wp-content/uploads/2021/09/2021-09-02T180534Z_1021040444_MT1USATODAY16670484_RTRMADP_3_JUNIOR-STUDENTS-LOOK-ON-DURING-LITERATURE-CLASS-AT-THE.jpg?quality=75&w=1500");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.BlockImg {
+    position: relative;
+    display: flex;
+    align-items: end;
+    text-align: left;
+    width: 100%;
+    height: 70%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); 
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        z-index: 1;
+    }
+}
+
+.BlockTitle {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2; 
+    color: white;
+}
+
+.BlockTitleP {
+    font-family: "Poppins";
+    font-size: 2.1vw;
+    color: white;
+    margin: 0;
+}
+
+.BlockTextP {
+    font-family: "Poppins";
+    font-size: 1.3vw;
+    color: black;
+    margin: 0;
+}
+
+.BlockContent{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    padding: 12px;
+    padding-top: 5px;
+}
+
+.LinkWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.LinkP {
+    cursor: pointer;
+    color: #0070f3;
+    font-size: 1.2vw;
+}

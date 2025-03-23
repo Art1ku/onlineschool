@@ -1,4 +1,4 @@
-import { Container } from "node_modules/@mui/material/index"
+import Container from "@/components/base/Container/Container"
 import classes from "./Footer.module.scss"
 
 export default function Footer(){
@@ -11,7 +11,7 @@ export default function Footer(){
                     <div className={classes.insideWrapper}>
                         <div className={classes.part}>
                             <div className={classes.partInside}>
-                                <p className={classes.schoolName}>Newdevis</p>
+                                <p className={classes.schoolName}>SCHOOL</p>
                                 <div className={classes.icon}></div>
                             </div>
                         </div>
