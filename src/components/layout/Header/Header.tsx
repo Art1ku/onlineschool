@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import classes from "./Header.module.scss";
 import Link from "next/link";
 import Container from "@/components/base/Container/Container";
-import { useSession } from "next-auth/react";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showNav, setShowNav] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-      const session = useSession();
-      console.log(session?.data?.user?.userDetails.roles[0].title)
-
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 500) {
-                setShowNav(true); 
+                setShowNav(true);
             } else {
-                setShowNav(false); 
+                setShowNav(false);
             }
         };
 
@@ -43,7 +39,7 @@ export default function Header() {
             });
         }
     };
-    
+
     return (
         <>
             <div className={classes.wrapper}>
@@ -60,7 +56,7 @@ export default function Header() {
                                 <Link href={"/auth/signin"} className={classes.LogIn}>
                                     Log in
                                 </Link>
-                                <div className={classes.divider} />
+                                <div className={classes.divider}/>
                                 <Link className={classes.Register} href={"/auth/signin"}>
                                     Register
                                 </Link>
@@ -78,7 +74,6 @@ export default function Header() {
             </div>
 
 
-
             <div className={`${classes.menuOverlay} ${menuOpen ? classes.menuVisible : ""}`} onClick={closeMenu}>
                 <div className={classes.menuContent} onClick={(e) => e.stopPropagation()}>
                     <div className={classes.menuContentCont}>
@@ -88,7 +83,7 @@ export default function Header() {
                     </div>
                     <div className={classes.menuContentCont}>
                         <Link href={"/settings"} onClick={() => setMenuOpen(false)}>
-                            <p>Settings</p> 
+                            <p>Settings</p>
                         </Link>
                     </div>
                     <div className={classes.menuContentCont}>

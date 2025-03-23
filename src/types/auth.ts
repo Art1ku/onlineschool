@@ -5,7 +5,7 @@ import { ChangeEvent, FormEvent } from "react";
 
 export interface AuthenticatedFields {
     identifier: string;
-    password: string
+    password: string;
 }
 
 export interface CustomJWTType extends JWT {
@@ -18,6 +18,7 @@ export interface JWTUser extends User {
     accessToken: string,
     refreshToken: string,
     accessTokenExpires: number,
+    userDetails:any
 }
 
 export interface ReponseUserToken {

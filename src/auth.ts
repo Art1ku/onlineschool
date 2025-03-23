@@ -2,88 +2,91 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { AuthenticatedFields, CustomJWTType, JWTUser, ReponseUserToken } from "./types/auth";
 import { refreshAccessToken, requestTokenAuthorize } from "@/service/auth";
+import { useAuthStore } from "./store/storeAuth";
 
 export const authOptions: NextAuthOptions = {
-  providers: [
-    CredentialsProvider({
-      name: "AuthCredentials",
-      credentials: {
-        email: { label: "Email", type: "email", placeholder: "Email..." },
-        password: { label: "Password", type: "password", placeholder: "Password..." },
-      },
-      async authorize(credentials, req) {
-        if (!credentials?.email || !credentials.password) {
-          return null;
-        }
-        const data: AuthenticatedFields = {
-          identifier: credentials.email,
-          password: credentials.password,
-        };
-        try {
-          const resData = await requestTokenAuthorize<ReponseUserToken>(data);
-          const { accessToken, refreshToken, expireIn } = resData;
-
-          const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${accessToken}`,
+    providers: [
+        CredentialsProvider({
+            name: "AuthCredentials",
+            credentials: {
+                email: { label: "Email", type: "email", placeholder: "Email..." },
+                password: { label: "Password", type: "password", placeholder: "Password..." },
             },
-          });
+            async authorize(credentials, req) {
+                if (!credentials?.email || !credentials.password) {
+                    return null;
+                }
+                const data: AuthenticatedFields = {
+                    identifier: credentials.email,
+                    password: credentials.password,
+                };
+                try {
+                    const resData = await requestTokenAuthorize<ReponseUserToken>(data);
+                    const { accessToken, refreshToken, expireIn } = resData;
 
-          const userDetails = await responseUserDetails.json();
-          const { username, email, id } = userDetails;
+                    const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${accessToken}`,
+                        },
+                    });
 
-          return {
-            id: String(id),
-            username: username,
-            email: email,
-            accessToken: accessToken,
-            refreshToken: refreshToken,
-            accessTokenExpires: expireIn,
-            userDetails,  // Сохраняем userDetails в объекте пользователя
-          } as JWTUser;
-        } catch (error) {
-          console.error("Authorization error:", error);
-          return null;
-        }
-      },
-    }),
-  ],
-  session: { strategy: 'jwt' },
-  pages: {
-    signIn: "/auth/signin",
-  },
-  callbacks: {
-    async jwt({ token, user }) {
-      const jwtUser = user as JWTUser;
-      const jwtToken = token as CustomJWTType;
-      if (user) {
-        return {
-          accessToken: jwtUser.accessToken,
-          refreshToken: jwtUser.refreshToken,
-          accessTokenExpires: jwtUser.accessTokenExpires,
-          user: jwtUser,
-          userDetails: jwtUser.userDetails,  // Сохраняем userDetails в token
-        };
-      }
+                    const userDetails = await responseUserDetails.json();
+                    const { username, email, id } = userDetails;
 
-      if (Date.now() < jwtToken.accessTokenExpires) {
-        return token;
-      }
-      const generatedToken = await refreshAccessToken(jwtToken);
-      return generatedToken;
+
+
+                    return {
+                        id: String(id),
+                        username: username,
+                        email: email,
+                        accessToken: accessToken,
+                        refreshToken: refreshToken,
+                        accessTokenExpires: expireIn,
+                        userDetails,  // Сохраняем userDetails в объекте пользователя
+                    } as JWTUser;
+                } catch (error) {
+                    console.error("Authorization error:", error);
+                    return null;
+                }
+            },
+        }),
+    ],
+    session: { strategy: 'jwt' },
+    pages: {
+        signIn: "/auth/signin",
     },
+    callbacks: {
+        async jwt({ token, user }) {
+            const jwtUser = user as JWTUser;
+            const jwtToken = token as CustomJWTType;
+            if (user) {
+                return {
+                    accessToken: jwtUser.accessToken,
+                    refreshToken: jwtUser.refreshToken,
+                    accessTokenExpires: jwtUser.accessTokenExpires,
+                    user: jwtUser,
+                    userDetails: jwtUser.userDetails,  // Сохраняем userDetails в token
+                };
+            }
 
-    async session({ session, token }) {
-      session.user = {
-        ...session.user,
-        accessToken: token.accessToken,
-        refreshToken: token.refreshToken,
-        userDetails: token.userDetails,  // Добавляем userDetails в сессию
-      } as JWTUser;
+            if (Date.now() < jwtToken.accessTokenExpires) {
+                return token;
+            }
+            const generatedToken = await refreshAccessToken(jwtToken);
+            return generatedToken;
+        },
 
-      return session;
+        async session({ session, token }) {
+            session.user = {
+                ...session.user,
+                accessToken: token.accessToken,
+                refreshToken: token.refreshToken,
+                userDetails: token.userDetails,  // Добавляем userDetails в сессию
+            } as JWTUser;
+
+            return session;
+        },
     },
-  },
 };
