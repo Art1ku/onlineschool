@@ -17,7 +17,7 @@ export interface CustomJWTType extends JWT {
 export interface JWTUser extends User {
     accessToken: string,
     refreshToken: string,
-    accessTokenExpires: number
+    accessTokenExpires: number,
 }
 
 export interface ReponseUserToken {

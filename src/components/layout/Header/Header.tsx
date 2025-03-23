@@ -10,7 +10,7 @@ export default function Header() {
     const [lastScrollY, setLastScrollY] = useState(0);
 
       const session = useSession();
-      console.log(session)
+      console.log(session?.data?.user?.userDetails.roles[0].title)
 
     useEffect(() => {
         const handleScroll = () => {
