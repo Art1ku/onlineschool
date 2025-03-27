@@ -1,7 +1,6 @@
 import { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { ChangeEvent, FormEvent } from "react";
-// import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 export interface AuthenticatedFields {
     identifier: string;

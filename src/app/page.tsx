@@ -10,12 +10,15 @@ import Header from "@/components/layout/Header/Header";
 import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
 import BlockLinks from "@/components/base/BlockLinks/BlockLinks";
 import { useSession } from "next-auth/react";
+import { useAuthStore } from "@/store/userStore";
 
 export default function Home() {
 
-    const session = useSession()
-    console.log(session);
-    
+    const { data: session } = useSession();
+    const { user } = useAuthStore();
+  
+    // console.log("Сессия:", session);
+    console.log("Данные пользователя из Zustand:", user);
 
     return (
         <>
