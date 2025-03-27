@@ -2,7 +2,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { AuthenticatedFields, CustomJWTType, JWTUser, ReponseUserToken } from "./types/auth";
 import { refreshAccessToken, requestTokenAuthorize } from "@/service/auth";
-import { useAuthStore } from "./store/storeAuth";
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -44,7 +43,6 @@ export const authOptions: NextAuthOptions = {
                         accessToken: accessToken,
                         refreshToken: refreshToken,
                         accessTokenExpires: expireIn,
-                        userDetails,  // Сохраняем userDetails в объекте пользователя
                     } as JWTUser;
                 } catch (error) {
                     console.error("Authorization error:", error);
@@ -67,7 +65,6 @@ export const authOptions: NextAuthOptions = {
                     refreshToken: jwtUser.refreshToken,
                     accessTokenExpires: jwtUser.accessTokenExpires,
                     user: jwtUser,
-                    userDetails: jwtUser.userDetails,  // Сохраняем userDetails в token
                 };
             }
 
@@ -83,7 +80,6 @@ export const authOptions: NextAuthOptions = {
                 ...session.user,
                 accessToken: token.accessToken,
                 refreshToken: token.refreshToken,
-                userDetails: token.userDetails,  // Добавляем userDetails в сессию
             } as JWTUser;
 
             return session;

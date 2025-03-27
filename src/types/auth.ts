@@ -18,7 +18,6 @@ export interface JWTUser extends User {
     accessToken: string,
     refreshToken: string,
     accessTokenExpires: number,
-    userDetails:any
 }
 
 export interface ReponseUserToken {
