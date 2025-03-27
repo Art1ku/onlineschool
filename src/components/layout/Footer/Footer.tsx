@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Container } from "../../../../node_modules/@mui/material/index"
-=======
 import Container from "@/components/base/Container/Container"
->>>>>>> 93d6702694eb4a4478d7736dd21f40dc817bf01c
 import classes from "./Footer.module.scss"
 
 export default function Footer(){

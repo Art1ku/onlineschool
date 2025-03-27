@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from '@/app/application/employee/Employee.module.scss';
 import RegisterInput from "@/components/ui/Input/InputsRegister";
+import FileInput from "@/components/ui/FileInput/FileInput";
 
 interface EmployeeFormProps {
-    employeeFields: { id: number; name: string; type: string; placeholder: string }[]; // Добавляем описание полей
-    employeeData: { [key: string]: string | number };
+    employeeFields: { id: number; name: string; type: string; placeholder: string }[];
+    employeeData: { [key: string]: string };
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (e: React.FormEvent) => void;
     handleFileChange: (e: React.ChangeEvent<HTMLInputElement>, fileKey: 'Diploma' | 'Passport') => void;
@@ -15,6 +16,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
     employeeData,
     handleInputChange,
     handleSubmit,
+    //    handleFileChange
 }) => {
     return (
         <form onSubmit={handleSubmit} className={classes.employeeForm}>
@@ -23,17 +25,25 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
                 {employeeFields.map((field) => (
                     <div key={field.id}>
                         <RegisterInput
-                            type={field.type} 
                             type={field.type}
                             name={field.name}
                             placeholder={field.placeholder}
-                            value={employeeData[field.name] || ""}
+                            value={employeeData[field.name]}
                             onChange={handleInputChange}
                         />
                     </div>
                 ))}
+                <div className={classes.files}>
+                    {/* <FileInput
+                        label="Passport"
+                        onChange={(e) => handleFileChange(e, 'Passport')}
+                    />
+                    <FileInput
+                        label="Diploma"
+                        onChange={(e) => handleFileChange(e, 'Diploma')}
+                    /> */}
+                </div>
             </div>
-
             <button type="submit">Submit Application</button>
         </form>
     );
