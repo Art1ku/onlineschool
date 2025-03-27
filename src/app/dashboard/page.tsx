@@ -1,18 +1,28 @@
-// 'use client';
-//
-// import { useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
-// import useAuthStore from '@/store/authStore';
-//
-// export default function Dashboard() {
-//     const { token } = useAuthStore();
-//     const router = useRouter();
-//
-//     useEffect(() => {
-//         if (!token) {
-//             router.push('/auth');
-//         }
-//     }, [token]);
-//
-//     return <h1>Добро пожаловать в личный кабинет!</h1>;
-// }
+"use client";
+
+import Header from "@/components/layout/Header/Header";
+import { useAuthStore } from "@/store/userStore";
+import React from "react";
+// import AdminLayout from "../ADMIN/layout";
+// import TeacherDashboard from "../TEACHER/layout";
+// import StudentDashboard from "../STUDENT/layout";
+
+const DashboardPage = () => {
+  const { user } = useAuthStore();
+  const role = user?.roles[0]?.title; // Безопасная проверка
+
+  const roleComponents = {
+    ADMIN: <Header />,
+    // TEACHER: <TeacherDashboard />,
+    // STUDENT: <StudentDashboard />,
+    PARENT: <Header />, // Родители могут видеть только шапку
+  };
+
+  return (
+    <div>
+      {roleComponents[role] || <p>Нет доступа</p>}
+    </div>
+  );
+};
+
+export default DashboardPage;

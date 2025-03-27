@@ -1,3 +1,5 @@
+'use client'
+
 import {useState, useEffect} from "react";
 import classes from "./Header.module.scss";
 import Link from "next/link";

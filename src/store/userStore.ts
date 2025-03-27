@@ -42,7 +42,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       }
 
       const userData = await response.json();
-      console.log("Получен userDetails:", userData);
+      // console.log("Получен userDetails:", userData);
       set({ user: userData });
     } catch (error) {
       console.error("Ошибка при загрузке пользователя:", error);

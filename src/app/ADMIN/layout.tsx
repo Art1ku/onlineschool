@@ -1,24 +1,20 @@
 "use client";
-import {useState} from "react";
+import { SidebarProvider } from "@/components/context/SidebarContext";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
 import Navbar from "@/components/layout/Navbar/Navbar";
-import classes from '@/styles/Admin.module.scss'
+import classes from '@/styles/Admin.module.scss';
 
-export default function AdminLayout({children}: { children: React.ReactNode }) {
-    const [isOpen, setIsOpen] = useState(true);
-
-    return (
-        <div className={classes.admin}>
-            <Sidebar isOpen={isOpen}/>
-            <div style={{flex: 1, transition: "margin-left 0.3s", marginLeft: isOpen ? "250px" : "0px"}}>
-                <Navbar toggleSidebar={() => setIsOpen(!isOpen)}/>
-                <div style={{padding: "20px"}}>
-                    {children}
-                </div>
-                <div className={classes.end}>
-                    <p>Made with ❤ by Красавчики</p>
-                </div>
-            </div>
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <SidebarProvider>
+      <div className={classes.admin}>
+        <Sidebar />
+        <div className={classes.content}>
+          <Navbar />
+          <div className={classes.page}>{children}</div>
+          <footer className={classes.footer}>Made with ❤ by Красавчики</footer>
         </div>
-    );
+      </div>
+    </SidebarProvider>
+  );
 }

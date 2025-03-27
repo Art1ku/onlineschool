@@ -14,12 +14,6 @@ import { useAuthStore } from "@/store/userStore";
 
 export default function Home() {
 
-    const { data: session } = useSession();
-    const { user } = useAuthStore();
-  
-    // console.log("Сессия:", session);
-    console.log("Данные пользователя из Zustand:", user);
-
     return (
         <>
             <div className={classes.body}>

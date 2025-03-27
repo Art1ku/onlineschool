@@ -345,3 +345,10 @@ export interface IAuth {
     type?: TypeAuthMethod
     onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 }
+
+
+
+
+{role === "ADMIN" && <Header />}
+const { user } = useAuthStore();
+const role = user?.roles[0].title

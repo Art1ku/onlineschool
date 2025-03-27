@@ -5,9 +5,9 @@ import classes from "@/styles/Admin.module.scss";
 import PageHeader from "@/components/layout/PageHeader/PageHeader";
 import LineChart from "@/components/charts/LineChart";
 import StatsOverview from "@/components/stats/StatsOverview";
-import withAuth from "@/hoc/withAuth";
+// import withAuth from "@/hoc/withAuth";
 
-const DashboardPage = () => {
+const AdminComponent = () => {
     return (
         <div className={classes.dashboard}>
             <div className='container'>
@@ -28,4 +28,4 @@ const DashboardPage = () => {
     );
 };
 
-export default withAuth(DashboardPage, ["ADMIN", "DIRECTOR"]);
+export default AdminComponent;

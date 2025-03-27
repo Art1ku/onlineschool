@@ -80,15 +80,29 @@ export const authOptions: NextAuthOptions = {
         },
 
 
-        async session({session, token}) {
-            session.user = {
-                ...session.user,
-                accessToken: token.accessToken,
-                refreshToken: token.refreshToken
-            } as JWTUser
+        // async session({session, token}) {
+        //     session.user = {
+        //         ...session.user,
+        //         accessToken: token.accessToken,
+        //         refreshToken: token.refreshToken
+        //     } as JWTUser
 
+        //     return session;
+        // }
+        async session({ session, token }) {
+            if (session.user) {
+              return {
+                ...session,
+                user: {
+                  ...session.user,
+                  accessToken: token.accessToken,
+                  refreshToken: token.refreshToken
+                }
+              };
+            }
             return session;
-        }
+          }
+          
 
     }
 }

@@ -1,11 +1,10 @@
 "use client";
+import { useSidebar } from '@/components/context/SidebarContext';
 import classes from './navbar.module.scss'
 
-interface NavbarProps {
-    toggleSidebar: () => void;
-}
+const Navbar = () => {
 
-const Navbar = ({ toggleSidebar }: NavbarProps) => {
+    const { toggleSidebar } = useSidebar();
     return (
         <nav className={classes.navbar}>
             <button onClick={toggleSidebar}>
