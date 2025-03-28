@@ -60,7 +60,6 @@ export const authOptions: NextAuthOptions = {
             const jwtUser = user as JWTUser
             const jwtToken = token as CustomJWTType
             if (user) {
-                // console.log("HEllo wolrld", jwtUser)
                 return {
                     accessToken: jwtUser.accessToken,
                     refreshToken: jwtUser.refreshToken,
@@ -75,20 +74,10 @@ export const authOptions: NextAuthOptions = {
                 return token;
             }
             const generatedToken = await refreshAccessToken(jwtToken);
-            // console.log("Generated token", generatedToken)
+            console.log("Generated token", generatedToken)
             return generatedToken;
         },
 
-
-        // async session({session, token}) {
-        //     session.user = {
-        //         ...session.user,
-        //         accessToken: token.accessToken,
-        //         refreshToken: token.refreshToken
-        //     } as JWTUser
-
-        //     return session;
-        // }
         async session({ session, token }) {
             if (session.user) {
               return {

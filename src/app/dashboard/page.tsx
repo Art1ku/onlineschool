@@ -2,31 +2,31 @@
 
 import Header from "@/components/layout/Header/Header";
 import { useAuthStore } from "@/store/userStore";
-import { useSession } from "next-auth/react";
 import React from "react";
-// import AdminLayout from "../ADMIN/layout";
-// import TeacherDashboard from "../TEACHER/layout";
-// import StudentDashboard from "../STUDENT/layout";
+import Loader from "@/components/ui/Loader/Loader";
 
 const DashboardPage = () => {
   const { user } = useAuthStore();
-  const session = useSession()
-  console.log(session);
-  
-  const role = user?.roles[0]?.title; // Безопасная проверка
+  const roles = user?.roles?.map(r => r.title) || [];
+  // console.log(roles)
+  // console.log( user?.roles)
 
   const roleComponents = {
-    ADMIN: <Header />,
-    // TEACHER: <TeacherDashboard />,
-    // STUDENT: <StudentDashboard />,
-    PARENT: <Header />, // Родители могут видеть только шапку
+    ADMIN: <div><Header /></div>,
+    PARENT: <Header />,
   };
-
   return (
-    <div>
-      {roleComponents[role] || <p>Нет доступа</p>}
-    </div>
+      <div>
+        {roles.map(role => roleComponents[role])}
+        {roles.length === 0 && (
+            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Loader />
+            </div>
+        )}
+      </div>
   );
+
+
 };
 
 export default DashboardPage;
