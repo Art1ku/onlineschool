@@ -14,8 +14,8 @@ import {useSession} from "next-auth/react";
 
 export default function Home() {
 
-    // const {user} = useAuthStore();
-    // console.log(user)
+    const {user} = useAuthStore();
+    console.log(user)
 
     const session = useSession();
     console.log(session)
