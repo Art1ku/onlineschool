@@ -4,13 +4,14 @@ import Link from "next/link";
 import Container from "@/components/base/Container/Container";
 import { useSession } from "next-auth/react";
 
+
+
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showNav, setShowNav] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-      const session = useSession();
-      console.log(session)
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,6 +45,9 @@ export default function Header() {
         }
     };
     
+    // const session = useSession();
+    // console.log(session)
+
     return (
         <>
             <div className={classes.wrapper}>

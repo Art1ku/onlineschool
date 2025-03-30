@@ -113,7 +113,6 @@ const ParentPage = () => {
 
     return (
         <div className={classes.parent}>
-            <Header/>
             <h2>Register Application</h2>
             <ParentForm
                 parentFields={parentFields}

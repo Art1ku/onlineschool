@@ -3,20 +3,24 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import  useAuthStore  from '@/store/authStore';
+import { $url } from '@/api/api';
+import { useSession } from 'next-auth/react';
 
 export default function Verify() {
     const [verificationCode, setCode] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    const { email } = useAuthStore(); // Берем email из Zustand
+    const { email } = useAuthStore();
+    const session = useSession()
+    console.log(session)
 
     const handleVerify = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await fetch('http://localhost:8080/api/v1/auth/verify', {
+            const res = await fetch(`${$url}/api/v1/auth/verify`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, verificationCode }), // Отправляем email и код
+                body: JSON.stringify({ email, verificationCode }),
             });
 
             const data = await res.json();
@@ -24,7 +28,7 @@ export default function Verify() {
 
             if (!res.ok) throw new Error(data.message || 'Ошибка верификации');
 
-            router.push('/auth'); // После успешной верификации - редирект в авторизацию
+            router.push('/auth'); 
         } catch (err: any) {
             setError(err.message);
         }

@@ -43,9 +43,11 @@ export default function BlockLinks() {
                                 <div className={classes.BlockText}>
                                     <p className={classes.BlockTextP}>Experienced professionals.</p>
                                 </div>
-                                <Link href={"/settings"}>
-                                    <div className={classes.LinkP}>More</div>
-                                </Link>
+                                <div className={classes.LinkWrapper}>
+                                    <Link href={"/settings"}>
+                                        <div className={classes.LinkP}>More</div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                         <div className={classes.block3}>
@@ -58,9 +60,11 @@ export default function BlockLinks() {
                                 <div className={classes.BlockText}>
                                     <p className={classes.BlockTextP}>Comprehensive learning.</p>
                                 </div>
-                                <Link href={"/settings"}>
-                                    <div className={classes.LinkP}>More</div>
-                                </Link>
+                                <div className={classes.LinkWrapper}>
+                                    <Link href={"/settings"}>
+                                        <div className={classes.LinkP}>More</div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                         <div className={classes.block4}>
@@ -73,9 +77,11 @@ export default function BlockLinks() {
                                 <div className={classes.BlockText}>
                                     <p className={classes.BlockTextP}>Sports, music, and more.</p>
                                 </div>
-                                <Link href={"/settings"}>
-                                    <div className={classes.LinkP}>More</div>
-                                </Link>
+                                <div className={classes.LinkWrapper}>
+                                    <Link href={"/settings"}>
+                                        <div className={classes.LinkP}>More</div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

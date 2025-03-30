@@ -59,7 +59,6 @@ const EmployeePage = () => {
 
     return (
         <div className={classes.employee}>
-            <Header />
             <h2>Register Application</h2>
             <EmployeeForm
                 employeeFields={[
