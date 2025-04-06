@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { create } from "zustand";
 
 interface Role {
@@ -37,12 +38,19 @@ export const useAuthStore = create<AuthState>((set) => ({
         },
       });
 
+
       if (!response.ok) {
         throw new Error("Ошибка при загрузке данных пользователя");
       }
 
       const userData = await response.json();
+      // const router = useRouter()
+
+      // if (userData == null) {
+      //   router.push('/verify')
+      // }
       // console.log("Получен userDetails:", userData);
+    
       set({ user: userData });
     } catch (error) {
       console.error("Ошибка при загрузке пользователя:", error);

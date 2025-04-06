@@ -1,32 +1,33 @@
 "use client";
 
+import AdminLayout from "@/components/layout/Admin/AdminLayout";
 import Header from "@/components/layout/Header/Header";
-import { useAuthStore } from "@/store/userStore";
-import React from "react";
 import Loader from "@/components/ui/Loader/Loader";
+import { useAuthStore } from "@/store/userStore";
+// import { Loader } from "lucide-react";
+import { useSession } from "next-auth/react";
+import React from "react";
 
 const DashboardPage = () => {
   const { user } = useAuthStore();
-  const roles = user?.roles?.map(r => r.title) || [];
-  // console.log(roles)
-  // console.log( user?.roles)
+  // const session = useSession()
+  console.log(user);
+  
+  // const role = user?.roles[0]?.title; 
+
+  const role = 'ADMIN'
 
   const roleComponents = {
-    ADMIN: <div><Header /></div>,
-    PARENT: <Header />,
+    ADMIN: <AdminLayout />,
+    PARENT: <Header />, 
+    TEACHER:<Header />,
   };
+
   return (
-      <div>
-        {roles.map(role => roleComponents[role])}
-        {roles.length === 0 && (
-            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Loader />
-            </div>
-        )}
-      </div>
+    <div>
+      {roleComponents[role] || <Loader/>}
+    </div>
   );
-
-
 };
 
 export default DashboardPage;

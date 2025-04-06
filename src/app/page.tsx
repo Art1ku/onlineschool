@@ -14,11 +14,11 @@ import {useSession} from "next-auth/react";
 
 export default function Home() {
 
-    const {user} = useAuthStore();
-    console.log(user)
+    // const {user} = useAuthStore();
+    // console.log(user,'1')
 
-    const session = useSession();
-    console.log(session)
+    // const session = useSession();
+    // console.log(session,'2')
 
     return (
         <>

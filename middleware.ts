@@ -9,7 +9,13 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/403", req.url));
     }
 
-    const role = token?.userDetails?.roles[0]?.title;
+    // Получаем роль пользователя из токена
+    const role = token?.user?.roles?.[0]?.title;
+    const isEnabled = token?.user?.enabled; // Проверка верификации
+
+    if (isEnabled === false) {
+        return NextResponse.redirect(new URL("/verify", req.url));
+    }
 
     console.log(role, "roles in middleware");
 

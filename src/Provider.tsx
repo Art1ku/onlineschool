@@ -3,11 +3,23 @@ import React, { useEffect } from "react";
 import { SessionProvider, useSession } from "next-auth/react";
 import { useAuthStore } from "@/store/userStore";
 
-const Provider = ({ children, session }: { children: React.ReactNode; session?: any }) => {
+const Provider = ({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session?: any;
+}) => {
   return <SessionProvider session={session}>{children}</SessionProvider>;
 };
 
-export default function AuthProvider({ children, session }: { children: React.ReactNode; session?: any }) {
+export default function AuthProvider({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session?: any;
+}) {
   return (
     <Provider session={session}>
       <FetchUserData />
@@ -20,7 +32,6 @@ export default function AuthProvider({ children, session }: { children: React.Re
 const FetchUserData = () => {
   const { data: session } = useSession();
   const { user, fetchUserDetails } = useAuthStore();
-
   useEffect(() => {
     if (session?.user?.accessToken && !user) {
       fetchUserDetails(session.user.accessToken);
