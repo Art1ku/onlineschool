@@ -14,7 +14,7 @@ async function requestTokenAuthorize<T>(body: AuthenticatedFields): Promise<T> {
                 }
             }
         )
-        return response.json();
+        return response.json();        
     } catch (error) {
         console.error(error)
         throw error
@@ -32,6 +32,9 @@ async function refreshAccessToken(token: {
             refreshToken: token.refreshToken
         }
 
+        console.log('bnwrnbpwrnbpwrnbpwnrbpnwrpnbwpirnbpwnrpbn Hello world!');
+        
+
         const response = await fetch('http://localhost:8080/api/v1/auth/refresh',
             {
                 method: "POST",
@@ -43,6 +46,8 @@ async function refreshAccessToken(token: {
         )
 
         const resData = await response.json();
+        console.log(resData,'resData');
+        
         return {
             ...token,
             accessToken: resData.accessToken,

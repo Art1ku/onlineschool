@@ -24,24 +24,24 @@ export const authOptions: NextAuthOptions = {
                 try {
                     const resData = await requestTokenAuthorize<ReponseUserToken>(data);
                     const {accessToken, refreshToken, expireIn} = resData;
-                    const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${accessToken}`
-                        }
-                    })
-                    console.log(responseUserDetails,'user Detail')
+                    // const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
+                    //     method: "GET",
+                    //     headers: {
+                    //         "Content-Type": "application/json",
+                    //         "Authorization": `Bearer ${accessToken}`
+                    //     }
+                    // })
 
-                    const userDetails = await responseUserDetails.json();
-
-                    const {username, email, id} = userDetails
+                    // const userDetails = await responseUserDetails.json();
+                    // console.log(userDetails);
+                    
+                    // const {username, email, id} = userDetails
 
 
                     return {
-                        id: String(id),
-                        username: username,
-                        email: email,
+                        // id: String(id),
+                        // username: username,
+                        // email: email,
                         accessToken: accessToken,
                         refreshToken: refreshToken,
                         accessTokenExpires: expireIn
@@ -55,19 +55,15 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     session: {strategy: 'jwt'},
-    pages: {
-        signIn: "/auth/signin"
-    },
     callbacks: {
         async jwt({token, user}) {
             const jwtUser = user as JWTUser
             const jwtToken = token as CustomJWTType
             if (user) {
-                console.log("HEllo wolrld", jwtUser)
                 return {
                     accessToken: jwtUser.accessToken,
                     refreshToken: jwtUser.refreshToken,
-                    accessTokenExpires: jwtUser.accessTokenExpires,
+                    accessTokenExpires: jwtUser.accessTokenExpires * 1000,
                     user
                 };
             }
@@ -82,16 +78,20 @@ export const authOptions: NextAuthOptions = {
             return generatedToken;
         },
 
-
-        async session({session, token}) {
-            session.user = {
-                ...session.user,
-                accessToken: token.accessToken,
-                refreshToken: token.refreshToken
-            } as JWTUser
-
+        async session({ session, token }) {
+            if (session.user) {
+              return {
+                ...session,
+                user: {
+                  ...session.user,
+                  accessToken: token.accessToken,
+                  refreshToken: token.refreshToken
+                }
+              };
+            }
             return session;
-        }
+          }
+          
 
     }
 }

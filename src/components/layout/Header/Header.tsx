@@ -1,29 +1,22 @@
-import cl from "./Header.module.scss"
-import {useState , useEffect} from "react"
-import school from "../../../../public/images/Group 15.png"
-import menu from "../../../../public/images/Group 1.png"
-import Link from "../../../../node_modules/next/link"
-import classes from "./Header.module.scss"
-import Container from "@/components/base/Container/Container"
-import {useSession} from "next-auth/react";
-
+'use client'
+import {useState, useEffect} from "react";
+import classes from "./Header.module.scss";
+import Link from "next/link";
+import Container from "@/components/base/Container/Container";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showNav, setShowNav] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-      const session = useSession();
-      console.log(session)
-
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 500) {
-                setShowNav(true); 
+                setShowNav(true);
             } else {
-                setShowNav(false); 
+                setShowNav(false);
             }
         };
 
@@ -47,7 +40,7 @@ export default function Header() {
             });
         }
     };
-    
+
     return (
         <>
             <div className={classes.wrapper}>
@@ -64,7 +57,7 @@ export default function Header() {
                                 <Link href={"/auth/signin"} className={classes.LogIn}>
                                     Log in
                                 </Link>
-                                <div className={classes.divider} />
+                                <div className={classes.divider}/>
                                 <Link className={classes.Register} href={"/auth/signin"}>
                                     Register
                                 </Link>
@@ -75,12 +68,11 @@ export default function Header() {
                             <a href="#section2" className={classes.anchor}>Our statistic</a>
                             <a href="#section3" className={classes.anchor}>School system</a>
                             <a href="#section4" className={classes.anchor}>News</a>
-                            <a href="#section5" className={classes.anchorL}>Section 5</a>
+                            <a href="#section5" className={classes.anchorL}>Info</a>
                         </div>
                     </div>
                 </Container>
             </div>
-
 
 
             <div className={`${classes.menuOverlay} ${menuOpen ? classes.menuVisible : ""}`} onClick={closeMenu}>
@@ -92,7 +84,7 @@ export default function Header() {
                     </div>
                     <div className={classes.menuContentCont}>
                         <Link href={"/settings"} onClick={() => setMenuOpen(false)}>
-                            <p>Settings</p> 
+                            <p>Settings</p>
                         </Link>
                     </div>
                     <div className={classes.menuContentCont}>

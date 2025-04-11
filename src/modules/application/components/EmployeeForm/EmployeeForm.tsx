@@ -12,12 +12,15 @@ interface EmployeeFormProps {
 }
 
 const EmployeeForm: React.FC<EmployeeFormProps> = ({
+
     employeeFields,
     employeeData,
     handleInputChange,
     handleSubmit,
     //    handleFileChange
 }) => {
+
+
     return (
         <form onSubmit={handleSubmit} className={classes.employeeForm}>
             <h3>Employee Information</h3>

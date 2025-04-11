@@ -1,10 +1,13 @@
-import React from 'react';
-import classes from '@/styles/Admin.module.scss'
+"use client";
+
+import React from "react";
+import classes from "@/styles/Admin.module.scss";
 import PageHeader from "@/components/layout/PageHeader/PageHeader";
 import LineChart from "@/components/charts/LineChart";
 import StatsOverview from "@/components/stats/StatsOverview";
+// import withAuth from "@/hoc/withAuth";
 
-const DashboardPage = () => {
+const AdminComponent = () => {
     return (
         <div className={classes.dashboard}>
             <div className='container'>
@@ -14,7 +17,7 @@ const DashboardPage = () => {
                         <div className={classes.text}>
                             <h4>Статистика пользователей</h4>
                         </div>
-                        <LineChart></LineChart>
+                        <LineChart />
                     </div>
                     <div className={classes.statistics_users}>
                         <StatsOverview />
@@ -25,4 +28,4 @@ const DashboardPage = () => {
     );
 };
 
-export default DashboardPage;
+export default AdminComponent;

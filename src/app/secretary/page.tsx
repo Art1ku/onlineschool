@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Secretary.module.scss";
 import { $api, $url } from "@/api/api";
-import useAuthStore from "@/store/authStore";
+
 
 interface NewsItem {
     id: number;
@@ -21,7 +21,7 @@ interface FormState {
 }
 
 export default function Secretary() {
-    const { token } = useAuthStore();
+    const token = localStorage.getItem("accessToken");
     const [news, setNews] = useState<NewsItem[]>([]);
     const [form, setForm] = useState<FormState>({
         newsTitle: "",
@@ -34,63 +34,43 @@ export default function Secretary() {
     const updateForm = (key: keyof FormState, value: any) => {
         setForm((prev) => ({ ...prev, [key]: value }));
     };
+    console.log("token:======== " + token);
+    
 
     const addNews = async () => {
         if (!form.newsTitle.trim() || !form.newsContent.trim() || !form.username.trim()) {
             alert("Please fill in all fields!");
             return;
         }
-
+    
         try {
-            console.log("Sending news data:", {
-                newsTitle: form.newsTitle,
-                newsContent: form.newsContent,
-                username: form.username,
-            });
-
-            const response = await fetch(`${$url}/api/v1/news`, {
+            const formData = new FormData();
+            formData.append("newsTitle", form.newsTitle);
+            formData.append("newsContent", form.newsContent);
+            formData.append("username", form.username);
+            if (form.image) {
+                formData.append("file", form.image);
+            }
+    
+            const response = await fetch(`${$url}/api/v1/news/`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`, 
                 },
-                body: JSON.stringify({
-                    newsTitle: form.newsTitle,
-                    newsContent: form.newsContent,
-                    username: form.username,
-                }),
+                body: formData,
             });
-
-
+    
             const newsData = await response.json();
-
-            let imageUrl = "";
-            if (form.image) {
-                console.log("Uploading image:", form.image);
-
-                const formData = new FormData();
-                formData.append("file", form.image);
-
-                const imageResponse = await fetch(`${$url}/api/v1/news/${newsData.id}/image`, {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: formData,
-                });
-
-
-                imageUrl = `${$url}/api/v1/minio/download/${form.image.name}`;
-            }
-
-            setNews((prevNews) => [...prevNews, { ...newsData, imageUrl }]);
+    
+            setNews((prevNews) => [...prevNews, newsData]);
             setForm({ newsTitle: "", newsContent: "", username: "", image: null });
-
+    
             console.log("News added successfully", newsData);
         } catch (error) {
             console.error("Error sending news", error);
         }
     };
+    
 
 
 

@@ -1,11 +1,10 @@
 import { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { ChangeEvent, FormEvent } from "react";
-// import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 export interface AuthenticatedFields {
     identifier: string;
-    password: string
+    password: string;
 }
 
 export interface CustomJWTType extends JWT {
@@ -17,7 +16,7 @@ export interface CustomJWTType extends JWT {
 export interface JWTUser extends User {
     accessToken: string,
     refreshToken: string,
-    accessTokenExpires: number
+    accessTokenExpires: number,
 }
 
 export interface ReponseUserToken {

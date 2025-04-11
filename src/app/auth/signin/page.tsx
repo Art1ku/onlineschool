@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import classes from "@/styles/auth.module.scss";
 import Link from "next/link";
 import gsap from "gsap";
-import Container from "@/components/base/Container/Container";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -51,6 +50,7 @@ const Page = () => {
         });
 
         if (!res.ok) {
+
           const data = await res.json();
           throw new Error(data.message || 'Ошибка регистрации');
         }
