@@ -9,9 +9,9 @@ import { useSession } from "next-auth/react";
 import React from "react";
 
 const DashboardPage = () => {
-  const { user } = useAuthStore();
+  // const { user } = useAuthStore();
   // const session = useSession()
-  console.log(user);
+  // console.log(user);
   
   // const role = user?.roles[0]?.title; 
 

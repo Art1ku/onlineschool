@@ -10,7 +10,6 @@ import StatsOverview from "@/components/stats/StatsOverview";
 const AdminComponent = () => {
     return (
         <div className={classes.dashboard}>
-            <div className='container'>
                 <PageHeader icon2='/home_grey.svg' bc='#4298FF' text='dashboard' icon='/home.svg' />
                 <div className={classes.statistics}>
                     <div className={classes.charts}>
@@ -23,7 +22,6 @@ const AdminComponent = () => {
                         <StatsOverview />
                     </div>
                 </div>
-            </div>
         </div>
     );
 };

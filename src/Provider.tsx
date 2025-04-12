@@ -13,6 +13,8 @@ const Provider = ({
   return <SessionProvider session={session}>{children}</SessionProvider>;
 };
 
+
+
 export default function AuthProvider({
   children,
   session,
@@ -20,6 +22,14 @@ export default function AuthProvider({
   children: React.ReactNode;
   session?: any;
 }) {
+
+const { user } = useAuthStore();
+const enabled = user?.enabled
+
+if (enabled == false) {
+  PushManager.router('/verify')
+}
+
   return (
     <Provider session={session}>
       <FetchUserData />
