@@ -6,11 +6,13 @@ import { $url } from "@/api/api";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
 import { useSession } from "next-auth/react";
+import { $cloud_api } from "@/api/cloudApi";
 
 interface NewsItem {
   newsTitle: string;
   newsContent: string;
-  username: string;
+  author: [];
+  images:string[]
 }
 
 export default function News() {
@@ -23,6 +25,7 @@ export default function News() {
         const response = await fetch(`${$url}/api/v1/news/detAllNews`);
         if (!response.ok) throw new Error("Не удалось загрузить новости");
         const data = await response.json();
+        console.log(data);
         setNews(data);
       } catch (error) {
         console.error("Ошибка при загрузке новостей", error);
@@ -64,6 +67,9 @@ export default function News() {
                       <h3 className={styles.newsTitle}>{item.newsTitle}</h3>
                       <p className={styles.newsText}>{item.newsContent}</p>
                       <span className={styles.newsAuthor}>By: {item.username}</span>
+                      {item.images.map((img:string) => (
+                         <img width="50" src={`${$cloud_api}/${img}`} alt="Картинка"  />
+                      ))}
                     </div>
                   </div>
                 ))

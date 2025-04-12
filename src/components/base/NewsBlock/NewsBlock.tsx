@@ -19,19 +19,21 @@ export default function NewsBlock() {
     const [news, setNews] = useState<NewsItem[]>([]);
 
     useEffect(() => {
-        fetch(`${$url}/api/v1/news/detAllNews`)
+        fetch(`${$url}/api/v1/news/detAllNews`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
             .then((res) => res.json())
             .then((data) => {
-                if (Array.isArray(data)) {
-                    setNews(data.slice(0, 10));
-                } else if (data && Array.isArray(data.news)) {
-                    setNews(data.news.slice(0, 10));
-                } else {
-                    console.error("Unexpected API response:", data);
-                }
+                
+                console.log(data);
+                
             })
             .catch((error) => console.error("Error fetching news:", error));
     }, []);
+    
 
     return (
         <div className={classes.wrapper}>

@@ -9,17 +9,13 @@ import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
 import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
 import BlockLinks from "@/components/base/BlockLinks/BlockLinks";
-import {useAuthStore} from "@/store/userStore";
-import {useSession} from "next-auth/react";
+import { useAuthStore } from "@/store/userStore";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-
-    const {user} = useAuthStore();
-    console.log(user)
-
     const session = useSession();
-    console.log(session)
-
+    console.log(session);
+   
     return (
         <>
             <div className={classes.body}>

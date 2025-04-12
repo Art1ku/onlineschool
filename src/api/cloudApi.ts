@@ -1,0 +1,1 @@
+export const $cloud_api = "http://localhost:9000"

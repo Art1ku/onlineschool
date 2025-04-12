@@ -16,15 +16,22 @@ interface User {
 
 interface AuthState {
   user: User | null;
+  token: string | null;
   setUser: (user: User) => void;
   clearUser: () => void;
+  setToken: (token: string) => void;
+  clearToken: () => void;
   fetchUserDetails: (accessToken: string) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
+  token: null,
   setUser: (user) => set({ user }),
   clearUser: () => set({ user: null }),
+
+  setToken: (token) => set({ token }), 
+  clearToken: () => set({ token: null }), 
 
   fetchUserDetails: async (accessToken) => {
     try {

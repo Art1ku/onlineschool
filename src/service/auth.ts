@@ -1,26 +1,37 @@
-import {AuthenticatedFields} from "@/types/auth";
-import {POST} from "@/app/api/auth/[...nextauth]/route";
+import { AuthenticatedFields } from "@/types/auth";
+import { useAuthStore } from "@/store/userStore";  
 
 async function requestTokenAuthorize<T>(body: AuthenticatedFields): Promise<T> {
-    "use server"
 
-    try {
-        const response = await fetch("http://localhost:8080/api/v1/auth/login",
-            {
-                "method": "POST",
-                "body": JSON.stringify(body),
-                "headers": {
-                    "content-type": "application/json",
-                }
-            }
-        )
-        return response.json();        
-    } catch (error) {
-        console.error(error)
-        throw error
+  try {
+    const response = await fetch("http://localhost:8080/api/v1/auth/login", {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (data?.accessToken) {
+      const { setToken, setUser } = useAuthStore.getState();
+
+      console.log(data); 
+
+      setToken(data.accessToken);
+
+      if (data.user) {
+        setUser(data.user); 
+      }
     }
-}
 
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
 async function refreshAccessToken(token: {
     accessTokenExpires: number;
@@ -32,21 +43,16 @@ async function refreshAccessToken(token: {
             refreshToken: token.refreshToken
         }
 
-        console.log('bnwrnbpwrnbpwrnbpwnrbpnwrpnbwpirnbpwnrpbn Hello world!');
-        
-
-        const response = await fetch('http://localhost:8080/api/v1/auth/refresh',
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        const response = await fetch('http://localhost:8080/api/v1/auth/refresh', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
 
         const resData = await response.json();
-        console.log(resData,'resData');
+        console.log(resData, 'resData');
         
         return {
             ...token,
@@ -55,11 +61,10 @@ async function refreshAccessToken(token: {
             accessTokenExpires: resData.expireIn,
         }
     } catch (error) {
-        console.error(error)
-        throw error
+        console.error(error);
+        throw error;
     }
 }
-
 
 export {
     requestTokenAuthorize,

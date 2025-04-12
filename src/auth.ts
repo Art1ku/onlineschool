@@ -24,24 +24,10 @@ export const authOptions: NextAuthOptions = {
                 try {
                     const resData = await requestTokenAuthorize<ReponseUserToken>(data);
                     const {accessToken, refreshToken, expireIn} = resData;
-                    // const responseUserDetails = await fetch("http://localhost:8080/api/v1/auth/user/details", {
-                    //     method: "GET",
-                    //     headers: {
-                    //         "Content-Type": "application/json",
-                    //         "Authorization": `Bearer ${accessToken}`
-                    //     }
-                    // })
-
-                    // const userDetails = await responseUserDetails.json();
-                    // console.log(userDetails);
+                    console.log(resData);
                     
-                    // const {username, email, id} = userDetails
-
 
                     return {
-                        // id: String(id),
-                        // username: username,
-                        // email: email,
                         accessToken: accessToken,
                         refreshToken: refreshToken,
                         accessTokenExpires: expireIn
