@@ -1,4 +1,4 @@
-import classes from './links.module.scss'
+//import classes from './links.module.scss'
 import Link from "next/link";
 
 interface LinkProps {
