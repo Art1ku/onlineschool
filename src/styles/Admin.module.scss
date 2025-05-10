@@ -1,0 +1,54 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #F2F6FC;
+  font-family: "Poppins";
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.end {
+  padding: 10px 20px;
+  font-family: "Inter";
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.dashboard {
+
+  .statistics {
+    font-family: "Inter";
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    height: 384px;
+    margin-top: 6vh;
+
+    .charts {
+      padding: 20px 30px 40px 10px;
+      background: white;
+      width: 70vw;
+      height: 100%;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+      .text {
+        width: 20vw;
+        font-family: "Inter";
+        padding: 4px 40px ;
+        color: #303034;
+        border-bottom: 1px solid #F1F1F1;
+      }
+    }
+
+    .statistics_users {
+
+    }
+  }
+
+
+}

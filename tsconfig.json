@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2017",
+    "types": ["next-auth"],
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

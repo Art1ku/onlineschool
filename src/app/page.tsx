@@ -1,43 +1,48 @@
 'use client'
-import { $url } from "@/api/api";
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import RegisterModal from "@/components/base/RegisterModal/RegisterModal";
-import Header from "@/components/base/Header/Header";
-import Footer from "@/components/base/Footer/Footer";
-import "./page.module.css"
+
+import Slider from "@/components/base/Slider/Slider";
+import Statistic from "@/components/base/Statistic/Statistic";
+import classes from "./main.module.css"
+import Hero_1 from "@/components/base/main/section_hero_1/Hero_1";
+import Hero_2 from "@/components/base/main/section_hero_2/Hero_2";
+import Footer from "@/components/layout/Footer/Footer";
+import Header from "@/components/layout/Header/Header";
+import NewsBlock from "@/components/base/NewsBlock/NewsBlock";
+import BlockLinks from "@/components/base/BlockLinks/BlockLinks";
+import {useAuthStore} from "@/store/userStore";
+import {useSession} from "next-auth/react";
 
 export default function Home() {
-  
-  const user =  {
-    "email": "ldhxhfdsfdsgfddgbk",
-    "password": "3pogj3p4g2",
-    "roles": "PARENT"
-  };
 
-  const sendPost = async () => {
-    try {
-      const res = await axios.get(`${$url}/api/v1/user/get-all-users`);
-      const data = res.data;
-      console.log("Response:", data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+    // const {user} = useAuthStore();
+    // console.log(user,'1')
 
+    // const session = useSession();
+    // console.log(session,'2')
 
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  return (
-    <>
-      <Header/>
-      <button onClick={sendPost}>Send Post</button>
-
-      <button onClick={() => setModalOpen(true)}>Open Modal</button>
-      <RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-      <Footer/>
-    </>
-  );
+    return (
+        <>
+            <div className={classes.body}>
+                <Header/>
+                <Slider></Slider>
+                <section id="section1">
+                    <Hero_1/>
+                </section>
+                {/*<RegisterModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />*/}
+                <section id="section2">
+                    <Statistic></Statistic>
+                </section>
+                <section id="section3">
+                    <Hero_2/>
+                </section>
+                <section id="section4">
+                    <NewsBlock></NewsBlock>
+                </section>
+                <section id="section5">
+                    <BlockLinks></BlockLinks>
+                </section>
+                <Footer/>
+            </div>
+        </>
+    );
 }
-

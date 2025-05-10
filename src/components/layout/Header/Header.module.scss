@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.wrapper {
+  width: 100%;
+  height: 9vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  color: black;
+  padding-top: 10px;
+
+}
+
+.flexBox{
+  width: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.insideWrapper{
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  padding: 0px 40px;
+  background: rgb(255, 255, 255);
+  // border-top-left-radius: 0;
+  // border-top-right-radius: 0;
+  border-top: 0;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.092);
+
+  .LogoWrapper{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    height: 65%;
+    padding-bottom: 3px;
+
+    .LogoName{
+      font-size: 3vw;
+      font-family: "Poppins";
+      font-weight: 400;
+      text-transform: uppercase;
+      color: black;
+      margin: 0;
+
+    }
+    .LogoNameHighLight{
+      font-size: 3vw;
+      font-family: "Poppins";
+      font-weight: 400;
+      text-transform: uppercase;
+      color: white;
+      margin: 0;
+
+    }
+  }
+
+  .RegWrapper{
+    height: 65%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+
+    .menu{
+
+    }
+
+    .LogIn{
+
+
+
+      font-size: 2vw;
+      font-family: "Poppins";
+      font-weight: 300;
+      text-transform: capitalize;
+      color: black;
+      margin: 0;
+      text-decoration: none;
+      
+    }
+
+    .Register{
+
+
+
+      font-size: 2vw;
+      font-family: "Poppins";
+      font-weight: 300;
+      text-transform: capitalize;
+      color: black;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .divider{
+      height: 4vh;
+      width: 0;
+      border: 0.01vw solid black;
+    }
+  }
+}
+
+
+
+
+
+
+.menuIcon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burger,
+.burgerOpen {
+  width: 30px;
+  height: 3px;
+  background: black;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger::before,
+.burger::after,
+.burgerOpen::before,
+.burgerOpen::after {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background: black;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger::before {
+  top: -10px;
+}
+
+.burger::after {
+  top: 10px;
+}
+
+.burgerOpen {
+  background: transparent;
+}
+
+.burgerOpen::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.burgerOpen::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menuOverlay {
+  position: fixed;
+  top: 16.8vh;
+  left: 0;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.menuVisible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menuContent {
+  width: 200px;
+  height: 20vh;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.menuVisible .menuContent {
+  transform: translateX(0);
+}
+
+
+.menuContent a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: color 0.2s ease-in-out;
+  font-family: "Poppins";
+}
+
+.menuContent a:hover {
+  color: rgb(200, 200, 200);
+}
+
+
+.menuContentCont{
+  height: 33%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navContainer {
+  width: 85vw;
+  height: 4vh;
+  background: white;
+  position: fixed;
+  top: 11.5vh;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.navVisible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.navHidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.anchor {
+  color: black;
+  text-decoration: none;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  position: relative;
+}
+
+.anchor:hover {
+  color: white;
+  background: rgb(125, 0, 183);
+  box-shadow: 0px 0px 20px rgba(125, 0, 183, 0.768);
+}
+
+.anchorF {
+  color: black;
+  text-decoration: none;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  position: relative;
+}
+
+.anchorF:hover {
+  color: white;
+  border-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: rgb(125, 0, 183);
+  box-shadow: 0px 0 20px rgba(125, 0, 183, 0.768);
+}
+
+.anchorL {
+  color: black;
+  text-decoration: none;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  position: relative;
+}
+
+.anchorL:hover {
+  color: white;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: rgb(125, 0, 183);
+  box-shadow: 0px 0 20px rgba(125, 0, 183, 0.768);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Адаптив для телефонов 375px */
+@media (max-width: 375px) {
+  .insideWrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 6vw;
+      }
+    }
+
+    .RegWrapper {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+
+
+      .LogIn,
+      .Register {
+        font-size: 4vw;
+      }
+
+      .divider {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Адаптив для телефонов 450px */
+@media (min-width: 376px) and (max-width: 450px) {
+  .wrapper{
+    height: auto;
+  }
+  .insideWrapper {
+    flex-direction: column;
+    text-align: left;
+    height: auto;
+    padding: 10px 0;
+
+    .LogoWrapper {
+      text-align: left;
+      .LogoName {
+        font-size: 7vw;
+        text-align: left;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+        text-align: left;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 70%;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 20px;
+
+      .LogIn,
+      .Register {
+        font-size: 5.6vw;
+      }
+
+      .divider {
+        height: 2.5vh;
+      }
+    }
+  }
+}
+
+/* Адаптив 620px */
+@media (min-width: 450px) and (max-width: 650px) {
+  .insideWrapper {
+    flex-direction: row;
+    padding: 0 10px;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 7vw;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 45%;
+      height: 6vh;
+
+      .LogIn,
+      .Register {
+        font-size: 3.5vw;
+      }
+
+      .divider {
+        height: 3vh;
+        border-width: 0.02vw;
+      }
+    }
+  }
+}
+
+
+/* Адаптив для планшета 980px */
+@media (min-width: 620px) and (max-width: 980px) {
+  .insideWrapper {
+    flex-direction: row;
+    padding: 0 10px;
+
+    .LogoWrapper {
+      .LogoName {
+        font-size: 7vw;
+
+      }
+      .LogoNameHighLight {
+        font-size: 7vw;
+
+      }
+    }
+
+    .RegWrapper {
+      width: 35%;
+      height: 6vh;
+
+      .LogIn,
+      .Register {
+        font-size: 2.5vw;
+      }
+
+      .divider {
+        height: 3vh;
+        border-width: 0.02vw;
+      }
+    }
+  }
+}
+
+/* Адаптив для экранов 1500px и выше */
+@media (min-width: 1500px) {
+  .insideWrapper {
+
+    .LogoWrapper {
+      .LogoName {
+      }
+    }
+
+    .RegWrapper {
+
+      .LogIn,
+      .Register {
+      }
+
+      .divider {
+      }
+    }
+  }
+}

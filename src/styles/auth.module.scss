@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.authBg {
+  font-family: "Poppins";
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 42px 32px;
+
+  .auth {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 40px;
+    padding: 8px;
+
+    .bg_auth {
+      width: 50%;
+      border-radius: 40px;
+      height: 100%;
+    }
+
+
+    .form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    background-repeat: no-repeat;
+
+      h2 {
+        font-size: 50px;
+        font-weight: 400;
+      }
+
+      p {
+        color: #A7A7A7;
+        margin-bottom: 50px;
+      }
+
+
+      form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        .check, .check div {
+          display: flex;
+          align-items: center;
+        }
+
+        .check {
+          margin-bottom: 45px;
+          justify-content: space-between;
+
+          div {
+            gap: 5px;
+
+            label {
+              font-size: 13px;
+            }
+          }
+        }
+
+        input {
+          height: 38px;
+          background: #F5F7FB;
+          border: none;
+          border-radius:10px ;
+          padding-left: 10px;
+        }
+
+        button {
+          border: none;
+          border-radius: 10px;
+          height: 38px;
+          background: black;
+          color: white;
+
+        }
+
+      }
+    }
+  }
+}
+
+.selectRole {
+  width: 100%;
+  height: 40px; 
+  background: #F5F7FB;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #4C4C4C;
+  cursor: pointer;
+  margin-bottom: 0px; 
+  appearance: none;
+}
+
+.selectRole:focus {
+  outline: none;
+  border-color: #4C4C4C;
+}
